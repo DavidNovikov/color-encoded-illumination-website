@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</title>
+
+  <meta name="description" content="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --link:#2563eb;
+      --link-hover:#1d4ed8;
+      --chip:#f3f4f6;
+      --code:#0b1020;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
+      --radius: 14px;
+      --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover); text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:40px 20px 80px}
+    header{padding:10px 0 10px}
+    h1{
+      font-size: 36px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 14px;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin: 0 0 18px;
+      font-size: 16px;
+    }
+    .authors{
+      margin: 0 0 14px;
+      font-size: 16px;
+    }
+    .authors a{font-weight:600}
+    .affil{
+      color:var(--muted);
+      margin: 0 0 22px;
+      font-size: 14px;
+    }
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 14px 0 22px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+      transition: transform .08s ease, box-shadow .08s ease;
+      font-weight:600;
+      color:var(--fg);
+      text-decoration:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      text-decoration:none;
+    }
+    .btn .tag{
+      font-weight:700;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+
+    hr{
+      border:0;
+      border-top:1px solid var(--line);
+      margin: 26px 0;
+    }
+
+    section{margin: 22px 0}
+    h2{
+      font-size: 22px;
+      margin: 0 0 10px;
+      letter-spacing:-0.01em;
+    }
+    p{margin: 0 0 12px}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    .media{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .placeholder{
+      border:1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      color:var(--muted);
+      background: #fafafa;
+    }
+    figure{margin:0}
+    figure img{
+      width:100%;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      display:block;
+    }
+    figcaption{
+      color:var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    pre{
+      margin: 0;
+      padding: 14px 16px;
+      background: var(--code);
+      color: #e5e7eb;
+      border-radius: var(--radius);
+      overflow:auto;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    code{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; font-size: 13px}
+
+    footer{
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* small screens */
+    @media (max-width: 520px){
+      h1{font-size: 28px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</h1>
+
+      <p class="authors">
+        <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David Novikov</a>,&nbsp;
+        <a href="https://www.linkedin.com/in/eilon-vaknin-laufer-311410247/" target="_blank" rel="noopener">Eilon Vaknin Laufer</a>,&nbsp;
+        <a href="https://tnarek.github.io/" target="_blank" rel="noopener">Narek Tumanyan</a>,&nbsp;
+        <a href="https://www.marksheinin.com/" target="_blank" rel="noopener">Mark Sheinin</a>
+      </p>
+
+      <p class="affil">Add affiliations here (optional)</p>
+
+      <div class="btnrow">
+        <!-- Replace # with actual links when ready -->
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          Paper <span class="tag">PDF</span>
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          Code <span class="tag">GitHub</span>
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          Poster <span class="tag">PDF</span>
+        </a>
+        <a class="btn" href="#" target="_blank" rel="noopener">
+          Video <span class="tag">Demo</span>
+        </a>
+      </div>
+    </header>
+
+    <hr />
+
+    <section id="teaser">
+      <h2>Teaser</h2>
+      <div class="media">
+        <div class="placeholder">
+          Put a teaser image/video here.<br/>
+          Example: <code>&lt;img src="assets/teaser.png" /&gt;</code> or an embedded YouTube iframe.
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <div class="card">
+        <p>
+          The task of capturing and rendering 3D dynamic scenes from 2D images has become increasingly popular in recent
+          years. However, most conventional cameras are bandwidth-limited to 30–60 FPS, restricting these methods to
+          static or slowly evolving scenes. While overcoming bandwidth limitations is difficult for general scenes,
+          recent years have seen a flurry of computational imaging methods that yield high-speed videos using
+          conventional cameras for specific scenarios (e.g., motion capture and particle image velocimetry). However,
+          most of these methods require modifications to a camera’s optics or the addition of mechanically moving
+          components, limiting them to a single-view high-speed capture. Consequently, these cannot be readily used to
+          capture a 3D representation of rapid scene motion.
+        </p>
+        <p>
+          In this paper, we propose a novel method to capture and reconstruct a volumetric representation of a
+          high-speed scene using only unaugmented low-speed cameras. Instead of modifying the hardware or optics of each
+          individual camera, we encode high-speed scene dynamics by illuminating the scene with a rapid, sequential
+          color coded sequence. This results in simultaneous multi-view capture of the scene, in which high-speed
+          temporal information is encoded in the images’ color. To construct a high-speed volumetric representation of
+          the dynamic scene, we develop a novel dynamic Gaussian Splatting-based approach that decodes the temporal
+          information from the images. We evaluate our approach on simulated scenes and real-world experiments using a
+          multi-camera imaging setup, showing first-of-a-kind high-speed volumetric scene reconstructions.
+        </p>
+      </div>
+    </section>
+
+    <section id="method">
+      <h2>Method</h2>
+      <p>
+        Add a short overview of the pipeline here. Suggested structure:
+        (1) sequential color-coded illumination, (2) multi-view capture with temporal info encoded in color,
+        (3) dynamic Gaussian Splatting reconstruction that decodes temporal information.
+      </p>
+
+      <div class="media">
+        <!-- Replace with your figure -->
+        <!--
+        <figure>
+          <img src="assets/method.png" alt="Method overview">
+          <figcaption>Overview of the proposed pipeline.</figcaption>
+        </figure>
+        -->
+        <div class="placeholder">
+          Method figure placeholder — add <code>assets/method.png</code> and uncomment the figure block.
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Results</h2>
+      <p>
+        Add qualitative results, comparisons, ablations, and/or timing here.
+      </p>
+
+      <div class="media">
+        <!-- Replace with your results figure -->
+        <!--
+        <figure>
+          <img src="assets/results.png" alt="Results">
+          <figcaption>Qualitative results and comparisons.</figcaption>
+        </figure>
+        -->
+        <div class="placeholder">
+          Results figure placeholder — add <code>assets/results.png</code> and uncomment the figure block.
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <section id="citation">
+      <h2>Citation</h2>
+      <div class="card">
+        <pre><code>@article{novikov2026colorencoded,
+  title   = {Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction},
+  author  = {Novikov, David and Vaknin Laufer, Eilon and Tumanyan, Narek and Sheinin, Mark},
+  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2026}
+}</code></pre>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
