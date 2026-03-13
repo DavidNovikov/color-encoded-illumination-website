@@ -1,239 +1,676 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+  <link rel="icon" type="image/png" sizes="32x32" href="regular_scaled_sim_exp_cam_6.png">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</title>
-
   <meta name="description" content="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction" />
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Castoro&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#ffffff;
-      --fg:#111827;
-      --muted:#6b7280;
-      --line:#e5e7eb;
-      --link:#2563eb;
-      --link-hover:#1d4ed8;
-      --chip:#f3f4f6;
-      --code:#0b1020;
-      --shadow: 0 10px 25px rgba(0,0,0,.08);
-      --radius: 14px;
-      --max: 980px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--fg);
-      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-    }
-    a{color:var(--link); text-decoration:none}
-    a:hover{color:var(--link-hover); text-decoration:underline}
-    .wrap{max-width:var(--max); margin:0 auto; padding:40px 20px 80px}
-    header{padding:10px 0 10px}
-    h1{
-      font-size: 36px;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin: 0 0 14px;
-    }
-    .subtitle{
-      color:var(--muted);
-      margin: 0 0 18px;
-      font-size: 16px;
-    }
-    .authors{
-      margin: 0 0 14px;
-      font-size: 16px;
-    }
-    .authors a{font-weight:600}
-    .affil{
-      color:var(--muted);
-      margin: 0 0 22px;
-      font-size: 14px;
+    body {
+      font-family: "Noto Sans", sans-serif;
     }
 
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin: 14px 0 22px;
+    .publication-title {
+      font-family: "Google Sans", "Noto Sans", sans-serif;
     }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius: 999px;
+  </style>
+  <style>
+    .fa-file-pdf::before {
+      content: "\f1c1" !important;
+    }
+  </style>
+  <style>
+    :root {
+      --bg: #fcfcfd;
+      --bg-soft: #f7f9fc;
+      --fg: #111111;
+      --muted: #5f6673;
+      --line: #d9dee7;
+      --line-strong: #c5cfdd;
+      --link: #184eaa;
+      --link-hover: #123a7d;
+      --chip: #eef2f8;
+      --code: #0f172a;
+      --radius: 12px;
+      --max: 1080px;
+      --accent: #8c1d18;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, var(--bg-soft) 0%, var(--bg) 180px, var(--bg) 100%);
+      color: var(--fg);
+      font-family: "Noto Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 36px 20px 80px;
+    }
+
+    .paper-header {
+      padding: 8px 0 10px;
+      text-align: center;
+    }
+
+    h1,
+    h2,
+    h3,
+    .publication-title {
+      font-family: "Noto Sans", sans-serif;
+    }
+
+    h1 {
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin: 0 0 14px;
+      text-wrap: balance;
+    }
+
+    .authors {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .authors a {
+      font-weight: 600;
+    }
+
+    .affil {
+      color: var(--muted);
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .btnrow {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 18px 0 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
       background: #fff;
-      box-shadow: 0 1px 0 rgba(0,0,0,.02);
-      transition: transform .08s ease, box-shadow .08s ease;
-      font-weight:600;
-      color:var(--fg);
-      text-decoration:none;
+      transition: background .15s ease, border-color .15s ease, transform .08s ease;
+      font-weight: 600;
+      color: var(--fg);
+      text-decoration: none;
     }
-    .btn:hover{
+
+    .btn:hover {
+      background: #f8fafc;
+      border-color: var(--line-strong);
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(0,0,0,.08);
-      text-decoration:none;
+      text-decoration: none;
     }
-    .btn .tag{
-      font-weight:700;
-      font-size: 12px;
-      padding: 2px 8px;
+
+    .btn .tag {
+      font-weight: 700;
+      font-size: 11px;
+      padding: 1px 7px;
       border-radius: 999px;
       background: var(--chip);
       color: var(--muted);
       border: 1px solid var(--line);
     }
 
-    hr{
-      border:0;
-      border-top:1px solid var(--line);
+    .toc {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 10px 0 28px;
+      padding-top: 4px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 28px 0;
+    }
+
+    section {
       margin: 26px 0;
     }
 
-    section{margin: 22px 0}
-    h2{
-      font-size: 22px;
-      margin: 0 0 10px;
-      letter-spacing:-0.01em;
+    h2 {
+      font-size: 28px;
+      margin: 0 0 14px;
+      letter-spacing: -0.015em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
     }
-    p{margin: 0 0 12px}
 
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:#fff;
-      box-shadow: var(--shadow);
-      padding: 18px;
+    p {
+      margin: 0 0 12px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      padding: 20px 22px;
       margin: 14px 0;
     }
 
-    .media{
-      display:grid;
+    .media {
+      display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 10px;
     }
-    .placeholder{
-      border:1px dashed var(--line);
+
+    .placeholder {
+      border: 1px dashed var(--line-strong);
       border-radius: var(--radius);
       padding: 16px;
-      color:var(--muted);
-      background: #fafafa;
-    }
-    figure{margin:0}
-    figure img{
-      width:100%;
-      border-radius: var(--radius);
-      border:1px solid var(--line);
-      display:block;
-    }
-    figcaption{
-      color:var(--muted);
-      font-size: 13px;
-      margin-top: 8px;
+      color: var(--muted);
+      background: #fafbfd;
     }
 
-    pre{
+    figure {
+      margin: 0;
+    }
+
+    figure img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      display: block;
+      background: #fff;
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    .hero-figure {
+      margin: 0;
+    }
+
+    .hero-caption {
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 950px;
+    }
+
+    .hero-caption strong {
+      color: var(--fg);
+    }
+
+    pre {
       margin: 0;
       padding: 14px 16px;
       background: var(--code);
       color: #e5e7eb;
-      border-radius: var(--radius);
-      overflow:auto;
-      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      overflow: auto;
+      border: 1px solid rgba(255, 255, 255, .08);
     }
-    code{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; font-size: 13px}
 
-    footer{
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+    }
+
+    footer {
       margin-top: 40px;
       color: var(--muted);
       font-size: 13px;
     }
 
-    /* small screens */
-    @media (max-width: 520px){
-      h1{font-size: 28px}
+    .teaser-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.05fr 1.35fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .teaser-col {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 16px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      height: 100%;
+    }
+
+    .teaser-col h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .teaser-items {
+      display: grid;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .teaser-col--three-items .teaser-items {
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .teaser-col--two-items .teaser-items {
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    .teaser-item {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 0;
+    }
+
+    .teaser-item video,
+    .teaser-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #000;
+      object-fit: cover;
+    }
+
+    .teaser-item figcaption {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .results-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .results-intro img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fff;
+      display: block;
+    }
+
+    .results-highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .results-group {
+      margin-top: 20px;
+      padding: 20px 22px;
+    }
+
+    .results-group h3 {
+      margin: 0 0 18px;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .experiment {
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      margin-top: 18px;
+    }
+
+    .experiment:first-of-type {
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .experiment-title {
+      font-size: 21px;
+      margin-bottom: 14px;
+    }
+
+    .experiment-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .experiment-media {
+      display: grid;
+      gap: 14px;
+    }
+
+    .media-title {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 0 8px;
+      color: var(--fg);
+    }
+
+    .gif-row>.media-block .media-title {
+      order: 2;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .view-block {
+      margin: 0;
+      width: 100%;
+    }
+
+    .gif-row {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 14px;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .media-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      max-width: 100%;
+      margin: 0;
+      flex: 0 1 auto;
+    }
+
+    .still-img,
+    .gif-img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .gif-img {
+      background: transparent;
+      border: none;
+    }
+
+    .gif-caption {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .teaser-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .results-intro,
+      .experiment-body {
+        grid-template-columns: 1fr;
+      }
+
+      .gif-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .still-img,
+      .gif-img {
+        width: 100%;
+        height: auto !important;
+        max-width: 100%;
+      }
+    }
+
+    .experiment-notes .media-title {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    .experiment-notes-box {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg-soft);
+      padding: 14px 16px;
+      color: var(--fg);
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: normal;
+      text-indent: 2em;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 34px;
+      }
+
+      .authors {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .wrap {
+        padding: 28px 16px 64px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <header>
+    <header class="paper-header">
+
       <h1>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</h1>
+      <h2>To appear in CVPR 2026!</h2>
+
 
       <p class="authors">
-        <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David Novikov</a>,&nbsp;
-        <a href="https://www.linkedin.com/in/eilon-vaknin-laufer-311410247/" target="_blank" rel="noopener">Eilon Vaknin Laufer</a>,&nbsp;
+        <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David
+          Novikov</a>,&nbsp;
+        <a href="https://www.linkedin.com/in/eilon-vaknin-laufer-311410247/" target="_blank" rel="noopener">Eilon Vaknin
+          Laufer</a>,&nbsp;
         <a href="https://tnarek.github.io/" target="_blank" rel="noopener">Narek Tumanyan</a>,&nbsp;
         <a href="https://www.marksheinin.com/" target="_blank" rel="noopener">Mark Sheinin</a>
       </p>
 
-      <p class="affil">Add affiliations here (optional)</p>
+      <p class="affil">Weizmann Institute of Science</p>
 
-      <div class="btnrow">
-        <!-- Replace # with actual links when ready -->
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          Paper <span class="tag">PDF</span>
+      <div class="buttons is-centered">
+
+        <!-- Paper -->
+        <a href="The_paper.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+          <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+          </span>
+          <span>Paper</span>
         </a>
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          Code <span class="tag">GitHub</span>
+
+        <!-- BibTeX -->
+        <a href="#citation" class="button is-dark is-rounded">
+          <span class="icon">
+            <i class="fas fa-quote-right"></i>
+          </span>
+          <span>BibTeX</span>
         </a>
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          Poster <span class="tag">PDF</span>
+
+        <!-- Code -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          <span>Code</span>
         </a>
-        <a class="btn" href="#" target="_blank" rel="noopener">
-          Video <span class="tag">Demo</span>
+
+        <!-- Poster -->
+        <a href="poster.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+          <span class="icon">
+            <i class="fas fa-file-pdf"></i>
+          </span>
+          <span>Poster</span>
         </a>
+
+        <!-- Video -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+          <span class="icon">
+            <i class="fab fa-youtube"></i>
+          </span>
+          <span>Video</span>
+        </a>
+
       </div>
     </header>
 
-    <hr />
 
     <section id="teaser">
-      <h2>Teaser</h2>
-      <div class="media">
-        <div class="placeholder">
-          Put a teaser image/video here.<br/>
-          Example: <code>&lt;img src="assets/teaser.png" /&gt;</code> or an embedded YouTube iframe.
+      <figure class="hero-figure">
+        <div class="teaser-grid">
+
+          <div class="teaser-col teaser-col--three-items">
+            <h3>Traditional Camera Capture</h3>
+            <div class="teaser-items">
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/overview_regular_capture_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Global perspective</figcaption>
+              </figure>
+
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/single_camera_regular_capture_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Image formation</figcaption>
+              </figure>
+
+              <figure class="teaser-item">
+                <img src="assets/single_camera_regular_capture_final.png" alt="Traditional camera capture final image">
+                <figcaption>Captured image</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="teaser-col teaser-col--three-items">
+            <h3>Our Color-Encoded Capture</h3>
+            <div class="teaser-items">
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/overview_colored_capture_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Global perspective</figcaption>
+              </figure>
+
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/single_camera_colored_capture_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Image formation</figcaption>
+              </figure>
+
+              <figure class="teaser-item">
+                <img src="assets/single_camera_colored_capture_final.png" alt="Color encoded capture final image">
+                <figcaption>Captured image</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="teaser-col teaser-col--two-items">
+            <h3>Volumetric Recovery of High-Speed Motion</h3>
+            <div class="teaser-items">
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/circular_cams__frame_03_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Frame 4 of recovered volumetric motion</figcaption>
+              </figure>
+
+              <figure class="teaser-item">
+                <video class="sync-video" muted autoplay playsinline loop preload="auto">
+                  <source src="assets/NovelViewCam_06__cumsum_norm_web.mp4" type="video/mp4">
+                </video>
+                <figcaption>Novel view of recovered motion</figcaption>
+              </figure>
+            </div>
+          </div>
+
         </div>
-      </div>
+
+        <figcaption class="hero-caption">
+          <strong>Figure 1.</strong>
+          Our method encodes high speed frames using sequential color illumination,
+          enabling high-speed dynamic volumetric reconstruction from synchronized low-frame-rate cameras.
+          Left: conventional capture. Middle: our color-encoded capture. Right: recovered volumetric dynamics
+          and novel-view rendering.
+        </figcaption>
+      </figure>
     </section>
 
     <hr />
-
-
-
-    <section id="abstract">
-      <h2>Abstract</h2>
-      <div class="card">
-        <p>
-          The task of capturing and rendering 3D dynamic scenes from 2D images has become increasingly popular in recent
-          years. However, most conventional cameras are bandwidth-limited to 30–60 FPS, restricting these methods to
-          static or slowly evolving scenes. While overcoming bandwidth limitations is difficult for general scenes,
-          recent years have seen a flurry of computational imaging methods that yield high-speed videos using
-          conventional cameras for specific scenarios (e.g., motion capture and particle image velocimetry). However,
-          most of these methods require modifications to a camera’s optics or the addition of mechanically moving
-          components, limiting them to a single-view high-speed capture. Consequently, these cannot be readily used to
-          capture a 3D representation of rapid scene motion.
-        </p>
-        <p>
-          In this paper, we propose a novel method to capture and reconstruct a volumetric representation of a
-          high-speed scene using only unaugmented low-speed cameras. Instead of modifying the hardware or optics of each
-          individual camera, we encode high-speed scene dynamics by illuminating the scene with a rapid, sequential
-          color coded sequence. This results in simultaneous multi-view capture of the scene, in which high-speed
-          temporal information is encoded in the images’ color. To construct a high-speed volumetric representation of
-          the dynamic scene, we develop a novel dynamic Gaussian Splatting-based approach that decodes the temporal
-          information from the images. We evaluate our approach on simulated scenes and real-world experiments using a
-          multi-camera imaging setup, showing first-of-a-kind high-speed volumetric scene reconstructions.
-        </p>
-      </div>
-    </section>
 
     <section id="method">
       <h2>Method</h2>
@@ -244,15 +681,8 @@
       </p>
 
       <div class="media">
-        <!-- Replace with your figure -->
-        <!--
-        <figure>
-          <img src="assets/method.png" alt="Method overview">
-          <figcaption>Overview of the proposed pipeline.</figcaption>
-        </figure>
-        -->
         <div class="placeholder">
-          Method figure placeholder — add <code>assets/method.png</code> and uncomment the figure block.
+          Method figure placeholder — add <code>assets/method.png</code> here when it is ready.
         </div>
       </div>
     </section>
@@ -260,19 +690,379 @@
     <section id="results">
       <h2>Results</h2>
       <p>
-        Add qualitative results, comparisons, ablations, and/or timing here.
+        We present results from both real-world and simulated experiments that illustrate our method's ability to
+        recover a scene's 3D structure by decoding high-speed temporal information encoded in multi-view strobed
+        images under diverse conditions.
       </p>
 
-      <div class="media">
-        <!-- Replace with your results figure -->
-        <!--
-        <figure>
-          <img src="assets/results.png" alt="Results">
-          <figcaption>Qualitative results and comparisons.</figcaption>
-        </figure>
-        -->
-        <div class="placeholder">
-          Results figure placeholder — add <code>assets/results.png</code> and uncomment the figure block.
+      <div class="card results-intro">
+        <div>
+          <p class="results-highlight">
+            These results provide, for the first time, a proof of concept for encoded volumetric high-speed
+            reconstruction using multiple slow, unaugmented cameras, at once.
+          </p>
+          <p>
+            Part I shows several scenes, including multiple moving objects and fine details such as moving text and
+            thin contours. Part II shows experimental results for three special cases: (a) a non-white albedo object,
+            (b) recovery from a single camera view, and (c) recovery with non-negligible textured background. Part III
+            provides additional experimental results for scenes similar to those used in prior work.
+          </p>
+          <p>
+            We show the training cameras in red and the novel cameras in green as shown to the right. We show only
+            novel camera views in the GIFs below. The camera plot is synchronized with the GIF motion.
+          </p>
+          <p>For the simulated scenes, we use one (for the single-view reconstruction), 20, or 50 cameras.</p>
+          <p>For the real data scenes, we use only eight cameras, arranged in an arc or in a rough line.</p>
+          <p>
+            For most scenes, we show the reconstruction for many cameras at a single timestamp to show the volumetric
+            geometry of the scene, and for one camera across many timestamps to show the temporal dynamics. We provide
+            images of the scene and strobed images to give more context to the scene and the images used in
+            reconstruction.
+          </p>
+        </div>
+        <img src="assets/cameras.png" alt="Camera layout visualization">
+      </div>
+
+      <div class="card results-group" id="part1">
+        <h3>Part I: Recovering Volumetric Scenes at High-Speeds</h3>
+
+        <div class="experiment" id="exp-explosion-sim">
+          <div class="experiment-title">Explosion Scene - Simulated</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image 1</div>
+                    <img class="still-img" src="assets/sim_explosion/stills/regular_scaled_sim_exp_cam_6.png"
+                      alt="sim explosion - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/sim_explosion/space_movement/space_movement.gif"
+                      alt="sim explosion - Space Movement- stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image 2</div>
+                    <img class="still-img" src="assets/sim_explosion/stills/strobed_scaled_sim_exp_cam_18.png"
+                      alt="sim explosion - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/sim_explosion/time_movement/time_movement.gif"
+                      alt="sim explosion - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here, we show the power of our method to disentangle many moving objects
+                at the same time and find their trajectories in space and time. The cubes fly in different directions
+                and have overlapping explosions. As we can see from the reconstruction, the cubes and their individual
+                motions are reconstructed well.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experiment" id="exp-spinning-disk">
+          <div class="experiment-title">Spinning Disk with Text</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Imaged object</div>
+                    <img class="still-img"
+                      src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/stills/regular_cvpr_white_cropped.jpeg"
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img"
+                      src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/space_movement/space_movement.gif"
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - Space Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img"
+                      src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/stills/strobed_cvpr_white_strobed.png"
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/time_movement/time_movement.gif"
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here, we capture an object on a fast-rotating disk. As seen in the main
+                paper, the camera, at its fastest speed, is not fast enough to capture the object's motion. Our method
+                recovers the high-speed motion in both space and time.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experiment" id="exp-chess-pieces">
+          <div class="experiment-title">Multiple Chess Pieces</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Imaged object</div>
+                    <img class="still-img" src="assets/chess_122/stills/regular_chess_pieces_cropped.jpeg"
+                      alt="chess 122 - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/chess_122/space_movement/space_movement.gif"
+                      alt="chess 122 - Space Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img" src="assets/chess_122/stills/strobed_chess_pieces_strobed.png"
+                      alt="chess 122 - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/chess_122/time_movement/time_movement.gif"
+                      alt="chess 122 - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here, we capture three chess pieces falling downward. Despite some
+                visible artifacts, our method recovers the volumetric motion of the chess pieces, enabling high-speed
+                novel view rendering.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card results-group" id="part2">
+        <h3>Part II: Testing Special Cases</h3>
+
+        <div class="experiment" id="exp-yellow-paper">
+          <div class="experiment-title">Non-white reflectance</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Imaged object</div>
+                    <img class="still-img" src="assets/CVPR_logo_yellow_v2/stills/regular_yellow_sticker_cropped.jpeg"
+                      alt="CVPR logo yellow v2 - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/CVPR_logo_yellow_v2/space_movement/space_movement.gif"
+                      alt="CVPR logo yellow v2 - Space Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img" src="assets/CVPR_logo_yellow_v2/stills/strobed_yellow_sticker_strobed.png"
+                      alt="CVPR logo yellow v2 - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/CVPR_logo_yellow_v2/time_movement/time_movement.gif"
+                      alt="CVPR logo yellow v2 - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here, we demonstrate that our method is not limited to pure white
+                albedos. The yellow paper reflects blue light poorly, diminishing the intensity of the blueish strobes.
+                Despite this, we can recover the motion well. The reviewer is encouraged to compare this result to the
+                experiment with the white paper and "CVPR" text.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experiment" id="exp-single-camera">
+          <div class="experiment-title">Single Camera View - Simulated</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img" src="assets/single_camera/stills/strobed_scaled_single_cam_cam_4.png"
+                      alt="single camera - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/single_camera/time_movement/time_movement.gif"
+                      alt="single camera - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">In this experiment, we show that we are able to reconstruct the scene
+                even with a single camera. As we can see, the motion is still recovered well for the single strobed
+                image. We don't show the motion over multiple camera positions, as a traditional single-camera image is
+                not sufficient to reconstruct a 3D scene.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experiment" id="exp-noise-bg">
+          <div class="experiment-title">Non-negligible Background - Simulated</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image 1</div>
+                    <img class="still-img" src="assets/w_background/stills/regular_scaled_w_bg_cam_7.png"
+                      alt="w background - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/w_background/space_movement/space_movement.gif"
+                      alt="w background - Space Movement for frame 4 - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image 2</div>
+                    <img class="still-img" src="assets/w_background/stills/strobed_scaled_w_bg_cam_15.png"
+                      alt="w background - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/w_background/time_movement/time_movement.gif"
+                      alt="w background - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here we simulate the effect of a non-negligable stationary background.
+                The recovery shows that the object motion is still recoverable in the background's presence; however,
+                some artifacts begin to emerge.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card results-group" id="part3">
+        <h3>Part III: Additional Experimental Results</h3>
+
+        <div class="experiment" id="exp-nerf-dart">
+          <div class="experiment-title">Nerf Dart</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Imaged object</div>
+                    <img class="still-img" src="assets/nerf_dart_3rd_attempt/stills/regular_nerf_dart_cropped.jpeg"
+                      alt="nerf dart 3rd attempt - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/nerf_dart_3rd_attempt/space_movement/space_movement.gif"
+                      alt="nerf dart 3rd attempt - Space Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img" src="assets/nerf_dart_3rd_attempt/stills/strobed_nerf_dart_strobed.png"
+                      alt="nerf dart 3rd attempt - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/nerf_dart_3rd_attempt/time_movement/time_movement.gif"
+                      alt="nerf dart 3rd attempt - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here we capture a Nerf dart flying across the screen and hits a wall
+                before bouncing backwards. For this experiment, we positioned the cameras to be roughly in a row to
+                capture the full range of the Nerf dart's motion.
+
+                Many prior works have used Nerf darts as simple, fast-moving, lab-safe objects for capture. However,
+                ours is the first to demonstrate a volumetric, high-speed rendering of their motion.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="experiment" id="exp-particles">
+          <div class="experiment-title">Particles</div>
+          <div class="experiment-body">
+            <div class="experiment-media">
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Imaged object</div>
+                    <img class="still-img" src="assets/nuts_58/stills/regular_nuts_cropped.jpg"
+                      alt="nuts 58 - Imaged object">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/nuts_58/space_movement/space_movement.gif"
+                      alt="nuts 58 - Space Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <div class="view-block">
+                <div class="gif-row">
+                  <div class="media-block">
+                    <div class="media-title">Strobed image</div>
+                    <img class="still-img" src="assets/nuts_58/stills/strobed_nuts_strobed.png"
+                      alt="nuts 58 - strobed image">
+                  </div>
+                  <figure class="media-block">
+                    <img class="gif-img" src="assets/nuts_58/time_movement/time_movement.gif"
+                      alt="nuts 58 - Time Movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time Movement</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div class="experiment-notes">
+              <div class="media-title">Experiment Details</div>
+              <div class="experiment-notes-box">Here we capture small identical `particles'. We covered metal hex nuts
+                with white paper and threw them in front of the cameras. We can decouple the individual particles and
+                show their relative positions in space as they move.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -280,7 +1070,7 @@
     <hr />
 
     <section id="citation">
-      <h2>Citation</h2>
+      <h2>BibTeX</h2>
       <div class="card">
         <pre><code>@article{novikov2026colorencoded,
   title   = {Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction},
@@ -291,10 +1081,149 @@
       </div>
     </section>
 
+    <footer>
+      © 2026 Authors. Website template adapted for academic project pages.
+    </footer>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const videos = Array.from(document.querySelectorAll(".sync-video"));
+
+    async function syncAndPlayVideos() {
+      if (!videos.length) return;
+
+      videos.forEach(video => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.autoplay = true;
+        video.loop = true;
+        video.preload = "auto";
+      });
+
+      await Promise.all(
+        videos.map(video => {
+          if (video.readyState >= 2) return Promise.resolve();
+          return new Promise(resolve => {
+            video.addEventListener("loadeddata", resolve, { once: true });
+          });
+        })
+      );
+
+      videos.forEach(video => {
+        video.currentTime = 0;
+      });
+
+      const playResults = await Promise.allSettled(
+        videos.map(video => video.play())
+      );
+
+      const failed = playResults.some(result => result.status === "rejected");
+      if (failed) {
+        console.warn("Some videos could not autoplay. Check browser autoplay policy or file paths.");
+      }
+
+      const master = videos[0];
+      if (!master) return;
+
+      master.addEventListener("play", () => {
+        videos.slice(1).forEach(video => {
+          if (video.paused) {
+            video.currentTime = master.currentTime;
+            video.play().catch(() => { });
+          }
+        });
+      });
+
+      master.addEventListener("seeked", () => {
+        videos.slice(1).forEach(video => {
+          video.currentTime = master.currentTime;
+        });
+      });
+
+      master.addEventListener("timeupdate", () => {
+        videos.slice(1).forEach(video => {
+          if (Math.abs(video.currentTime - master.currentTime) > 0.12) {
+            video.currentTime = master.currentTime;
+          }
+        });
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", syncAndPlayVideos);
+  </script>
+  <script>
+    function fitGifRows() {
+      if (window.innerWidth <= 900) {
+        document.querySelectorAll('.still-img, .gif-img').forEach(el => {
+          el.style.width = '';
+          el.style.height = '';
+        });
+        return;
+      }
+
+      const rows = document.querySelectorAll('.gif-row');
+
+      rows.forEach(row => {
+        const still = row.querySelector('.still-img');
+        const gif = row.querySelector('.gif-img');
+
+        if (!still || !gif) return;
+        if (!still.naturalWidth || !still.naturalHeight) return;
+        if (!gif.naturalWidth || !gif.naturalHeight) return;
+
+        const rowStyle = getComputedStyle(row);
+        const gap = parseFloat(rowStyle.gap || rowStyle.columnGap || 0);
+
+        const stillStyle = getComputedStyle(still);
+        const gifStyle = getComputedStyle(gif);
+
+        const stillExtra =
+          parseFloat(stillStyle.borderLeftWidth) +
+          parseFloat(stillStyle.borderRightWidth);
+
+        const gifExtra =
+          parseFloat(gifStyle.borderLeftWidth) +
+          parseFloat(gifStyle.borderRightWidth);
+
+        const availableWidth = Math.max(
+          0,
+          row.clientWidth - gap - stillExtra - gifExtra
+        );
+
+        const stillAspect = still.naturalWidth / still.naturalHeight;
+        const gifAspect = gif.naturalWidth / gif.naturalHeight;
+
+        const targetHeight = availableWidth / (stillAspect + gifAspect);
+
+        const stillWidth = targetHeight * stillAspect;
+        const gifWidth = targetHeight * gifAspect;
+
+        still.style.width = `${stillWidth}px`;
+        still.style.height = `${targetHeight}px`;
+
+        gif.style.width = `${gifWidth}px`;
+        gif.style.height = `${targetHeight}px`;
+      });
+    }
+
+    function waitForGifRowsAndFit() {
+      const media = document.querySelectorAll('.still-img, .gif-img');
+
+      Promise.all(
+        Array.from(media).map(el => {
+          if (el.complete && el.naturalWidth > 0) return Promise.resolve();
+          return new Promise(resolve => {
+            el.addEventListener('load', resolve, { once: true });
+            el.addEventListener('error', resolve, { once: true });
+          });
+        })
+      ).then(fitGifRows);
+    }
+
+    window.addEventListener('DOMContentLoaded', waitForGifRowsAndFit);
+    window.addEventListener('resize', fitGifRows);
   </script>
 </body>
+
 </html>
