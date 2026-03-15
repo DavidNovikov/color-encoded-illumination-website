@@ -82,6 +82,11 @@
       text-align: center;
     }
 
+    .method-figure {
+  max-width: 900px;
+  margin: 18px auto 0;
+}
+
     h1,
     h2,
     h3,
@@ -210,14 +215,6 @@
       margin-top: 10px;
     }
 
-    .placeholder {
-      border: 1px dashed var(--line-strong);
-      border-radius: var(--radius);
-      padding: 16px;
-      color: var(--muted);
-      background: #fafbfd;
-    }
-
     figure {
       margin: 0;
     }
@@ -324,7 +321,9 @@
       height: 100%;
       display: block;
       border-radius: var(--radius);
-      border: 1px solid var(--line);
+      /* border: 1px solid var(--line);
+       */
+      border: NONE;
       background: #000;
       object-fit: cover;
     }
@@ -680,12 +679,16 @@
         (3) dynamic Gaussian Splatting reconstruction that decodes temporal information.
       </p>
 
-      <div class="media">
-        <div class="placeholder">
-          Method figure placeholder — add <code>assets/method.png</code> here when it is ready.
-        </div>
-      </div>
-    </section>
+<figure class="media method-figure">
+  <img src="assets/reconstruction.svg" alt="Overview of the reconstruction pipeline">
+  <figcaption>
+    <strong>Figure 2.</strong>
+    Overview of our method: sequential color-coded illumination encodes temporal information into each captured frame,
+    synchronized multi-view cameras observe the scene under this encoding, and the reconstruction pipeline decodes the
+    embedded temporal structure to recover high-speed volumetric dynamics.
+  </figcaption>
+</figure>
+   </section>
 
     <section id="results">
       <h2>Results</h2>
