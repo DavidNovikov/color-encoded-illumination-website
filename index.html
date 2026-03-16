@@ -82,10 +82,40 @@
       text-align: center;
     }
 
-    .method-figure {
-  max-width: 900px;
-  margin: 18px auto 0;
-}
+    .method-pipeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+      max-width: 980px;
+      margin: 18px auto 0;
+    }
+
+    .method-pipeline figure {
+      margin: 0;
+    }
+
+    .method-pipeline img {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      display: block;
+      background: #fff;
+    }
+
+    .method-pipeline figcaption {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .method-pipeline {
+        grid-template-columns: 1fr;
+      }
+    }
 
     h1,
     h2,
@@ -674,21 +704,36 @@
     <section id="method">
       <h2>Method</h2>
       <p>
-        Add a short overview of the pipeline here. Suggested structure:
-        (1) sequential color-coded illumination, (2) multi-view capture with temporal info encoded in color,
-        (3) dynamic Gaussian Splatting reconstruction that decodes temporal information.
+        Our pipeline has two main stages. First, we perform color-encoded capture, where sequential colored illumination
+        embeds high-speed temporal information into each exposure observed by synchronized multi-view cameras. Second,
+        we
+        reconstruct the scene using a dynamic Gaussian Splatting pipeline that decodes this embedded temporal
+        information
+        to recover high-speed volumetric dynamics and enable novel-view rendering.
       </p>
 
-<figure class="media method-figure">
-  <img src="assets/reconstruction.svg" alt="Overview of the reconstruction pipeline">
-  <figcaption>
-    <strong>Figure 2.</strong>
-    Overview of our method: sequential color-coded illumination encodes temporal information into each captured frame,
-    synchronized multi-view cameras observe the scene under this encoding, and the reconstruction pipeline decodes the
-    embedded temporal structure to recover high-speed volumetric dynamics.
-  </figcaption>
-</figure>
-   </section>
+      <div class="method-pipeline">
+        <figure>
+          <img src="assets/capture.svg" alt="Overview of the color-encoded capture process">
+          <figcaption><strong>Capture.</strong> Sequential color illumination encodes temporal information during image
+            acquisition.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/reconstruction.svg" alt="Overview of the reconstruction pipeline">
+          <figcaption><strong>Reconstruction.</strong> The reconstruction pipeline decodes the embedded temporal
+            structure to recover high-speed volumetric dynamics.</figcaption>
+        </figure>
+      </div>
+
+      <figcaption class="hero-caption" style="margin: 12px auto 0; max-width: 980px;">
+        <strong>Figure 2.</strong>
+        Left: our color-encoded capture process, where sequential illumination embeds temporal information into each
+        captured frame. Right: our reconstruction pipeline, which decodes the captured observations to recover
+        high-speed
+        volumetric scene dynamics.
+      </figcaption>
+    </section>
 
     <section id="results">
       <h2>Results</h2>
