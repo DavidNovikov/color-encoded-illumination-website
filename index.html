@@ -701,78 +701,27 @@
 
     <hr />
 
-    <section id="method">
-      <h2>Method</h2>
-      <p>
-        Our pipeline has two main stages. First, we perform color-encoded capture, where sequential colored illumination
-        embeds high-speed temporal information into each exposure observed by synchronized multi-view cameras. Second,
-        we
-        reconstruct the scene using a dynamic Gaussian Splatting pipeline that decodes this embedded temporal
-        information
-        to recover high-speed volumetric dynamics and enable novel-view rendering.
-      </p>
-
-      <div class="method-pipeline">
-        <figure>
-          <img src="assets/capture.svg" alt="Overview of the color-encoded capture process">
-          <figcaption><strong>Capture.</strong> Sequential color illumination encodes temporal information during image
-            acquisition.</figcaption>
-        </figure>
-
-        <figure>
-          <img src="assets/reconstruction.svg" alt="Overview of the reconstruction pipeline">
-          <figcaption><strong>Reconstruction.</strong> The reconstruction pipeline decodes the embedded temporal
-            structure to recover high-speed volumetric dynamics.</figcaption>
-        </figure>
-      </div>
-
-      <figcaption class="hero-caption" style="margin: 12px auto 0; max-width: 980px;">
-        <strong>Figure 2.</strong>
-        Left: our color-encoded capture process, where sequential illumination embeds temporal information into each
-        captured frame. Right: our reconstruction pipeline, which decodes the captured observations to recover
-        high-speed
-        volumetric scene dynamics.
-      </figcaption>
-    </section>
-
-    <section id="results">
-      <h2>Results</h2>
-      <p>
-        We present results from both real-world and simulated experiments that illustrate our method's ability to
-        recover a scene's 3D structure by decoding high-speed temporal information encoded in multi-view strobed
-        images under diverse conditions.
-      </p>
+    <section id="main-results">
+      <h2>Main results</h2>
 
       <div class="card results-intro">
         <div>
-          <p class="results-highlight">
-            These results provide, for the first time, a proof of concept for encoded volumetric high-speed
-            reconstruction using multiple slow, unaugmented cameras, at once.
+
+          <p>
+            We provide some simulated and real results here to show the power of our method. We show more results after
+            the method section, including some special cases.
           </p>
           <p>
-            Part I shows several scenes, including multiple moving objects and fine details such as moving text and
-            thin contours. Part II shows experimental results for three special cases: (a) a non-white albedo object,
-            (b) recovery from a single camera view, and (c) recovery with non-negligible textured background. Part III
-            provides additional experimental results for scenes similar to those used in prior work.
-          </p>
-          <p>
-            We show the training cameras in red and the novel cameras in green as shown to the right. We show only
-            novel camera views in the GIFs below. The camera plot is synchronized with the GIF motion.
-          </p>
-          <p>For the simulated scenes, we use one (for the single-view reconstruction), 20, or 50 cameras.</p>
-          <p>For the real data scenes, we use only eight cameras, arranged in an arc or in a rough line.</p>
-          <p>
-            For most scenes, we show the reconstruction for many cameras at a single timestamp to show the volumetric
-            geometry of the scene, and for one camera across many timestamps to show the temporal dynamics. We provide
-            images of the scene and strobed images to give more context to the scene and the images used in
-            reconstruction.
+            We show the training cameras in red and the novel-view cameras in green as shown to the right. We show only
+            novel viewpoints in the GIFs below. The camera plot is synchronized with the GIF motion.
+
           </p>
         </div>
         <img src="assets/cameras.png" alt="Camera layout visualization">
       </div>
 
       <div class="card results-group" id="part1">
-        <h3>Part I: Recovering Volumetric Scenes at High-Speeds</h3>
+        <h3>Recovering Volumetric Scenes at High Speeds</h3>
 
         <div class="experiment" id="exp-explosion-sim">
           <div class="experiment-title">Explosion Scene - Simulated</div>
@@ -904,9 +853,103 @@
           </div>
         </div>
       </div>
+    </section>
 
+    <section id="method">
+      <h2>Method</h2>
+      <p>
+        Our pipeline has two main stages.
+        First, we perform color-encoded capture, where we strobe a sequence of colored light onto the scene at a high
+        speed.
+        This light temporally encodes the scene's dynamics into the captured images.
+        We synchronize the cameras to the light strobes so that each camera captures the same information.
+
+        Second, we perform reconstruction, where we use a dynamic Gaussian Splatting pipeline to decode the captured
+        images and recover the scene's high-speed volumetric dynamics.
+      </p>
+
+      <div class="card">
+        <h2>Part 1: Capture</h2>
+
+        <div class="media">
+          <figure>
+            <h4>Step 1: Flashing Colored Lights</h4>
+            <p>
+              To make our system highly adaptable, we choose to take a standard and widely available R, G, and B LED
+              light and flash it at a high speed to create arbitrary colored strobes.
+              The trick is to use PWM (pulse width modulation) to create intermediate colors between the three base
+              colors.
+              Since our scene motion is slow relative to the speed of the strobe, the objects are approximately static
+              during each strobe. We do not observe any colored motion blur artifacts in the captured images, and the
+              colors are perceived as solid colors. We can observe this
+              in captured images in the results sections.
+            </p>
+            <img src="assets/method/pwm_to_color.png" alt="Step 1: Flashing colored lights">
+          </figure>
+
+          <figure>
+            <h4>Step 2: Synchronizing Light to Cameras</h4>
+            <p>
+              Here we show our setup with 8 cameras and our light.
+              To strobe the light at high speeds, we use an Arduino Due microcontroller to control the light's PWM and
+              synchronize it to the cameras' capture. We show our circuit schematic and a photo of our physical setup.
+              We use the MOBL-300x150-RGBW light and IDS UI-3240CP cameras.
+            </p>
+            <img src="assets/method/cam_and_light_setup.png" alt="Step 2: Synchronizing light to cameras">
+          </figure>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Part 2: Training and Reconstruction</h2>
+
+        <div class="media">
+          <figure>
+            <h4>Step 3: Preprocessing</h4>
+            To preprocess the images for reconstruction, we develop a statistical model of the background for each
+            camera, and then remove the background from the captured images.
+            Next, we only perform our method on the foreground images.
+            We also perform a spectral calibration across cameras using a 24-tile Spyder color checker (SCK300) and
+            find a geometric calibration for our scene using a calibration object and COLMAP. Note that since we are
+            using the 8 instances of the same camera, the spectral response is similar across cameras.
+
+            <img src="assets/method/preprocessing.png" alt="Step 3: Preprocessing">
+          </figure>
+
+          <figure>
+            <h4>Step 4: Forward Pass</h4>
+            <p>
+              For each forward pass we render the scene using a single-color-channel dynamic gaussian model which we
+              adapt from <a href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>, for a
+              camera <b><i>C<sub>i</sub></i></b> for 10 time stamps (which correspond to the 10 strobe colors).
+              Next, we take the colors from the images captured by camera <b><i>C<sub>i</sub></i></b> and multiply them
+              by the
+              rendered motion for each time stamp and sum over these images to
+              produce a final colored image which should correspond to the captured image for camera
+              <b><i>C<sub>i</sub></i></b>.
+            </p>
+            <img src="assets/method/reconstruction_forward.png" alt="Step 4: Forward pass">
+          </figure>
+
+          <figure>
+            <h4>Step 5: Loss Functions</h4>
+            <p>
+              Our loss function has two components: a L<sub>1</sub> loss between the image output by our model and the
+              captured
+              image for each camera, and total variation loss on the inverse depth images to encourage smoothness in the
+              scene's
+              geometry.
+            </p>
+            <img src="assets/method/reconstruction_loss.png" alt="Step 5: Loss functions">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Additional results</h2>
       <div class="card results-group" id="part2">
-        <h3>Part II: Testing Special Cases</h3>
+        <h3>Testing Special Cases</h3>
 
         <div class="experiment" id="exp-yellow-paper">
           <div class="experiment-title">Non-white reflectance</div>
@@ -944,8 +987,8 @@
             <div class="experiment-notes">
               <div class="media-title">Experiment Details</div>
               <div class="experiment-notes-box">Here, we demonstrate that our method is not limited to pure white
-                albedos. The yellow paper reflects blue light poorly, diminishing the intensity of the blueish strobes.
-                Despite this, we can recover the motion well. The reviewer is encouraged to compare this result to the
+                albedos. The yellow paper reflects blue light poorly, diminishing the intensity of the bluish strobes.
+                Despite this, we can recover the motion well. We encourage you to compare this result to the
                 experiment with the white paper and "CVPR" text.</div>
             </div>
           </div>
@@ -1015,7 +1058,7 @@
             </div>
             <div class="experiment-notes">
               <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we simulate the effect of a non-negligable stationary background.
+              <div class="experiment-notes-box">Here we simulate the effect of a non-negligible stationary background.
                 The recovery shows that the object motion is still recoverable in the background's presence; however,
                 some artifacts begin to emerge.</div>
             </div>
@@ -1024,7 +1067,7 @@
       </div>
 
       <div class="card results-group" id="part3">
-        <h3>Part III: Additional Experimental Results</h3>
+        <h3>Additional Experimental Results</h3>
 
         <div class="experiment" id="exp-nerf-dart">
           <div class="experiment-title">Nerf Dart</div>
@@ -1061,7 +1104,7 @@
             </div>
             <div class="experiment-notes">
               <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we capture a Nerf dart flying across the screen and hits a wall
+              <div class="experiment-notes-box">Here we capture a Nerf dart flying across the screen and hiting a wall
                 before bouncing backwards. For this experiment, we positioned the cameras to be roughly in a row to
                 capture the full range of the Nerf dart's motion.
 
@@ -1106,7 +1149,7 @@
             </div>
             <div class="experiment-notes">
               <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we capture small identical `particles'. We covered metal hex nuts
+              <div class="experiment-notes-box">Here we capture small identical 'particles'. We covered metal hex nuts
                 with white paper and threw them in front of the cameras. We can decouple the individual particles and
                 show their relative positions in space as they move.</div>
             </div>
