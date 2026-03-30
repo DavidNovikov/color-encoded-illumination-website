@@ -3,10 +3,10 @@
 
 <head>
   <link rel="icon" type="image/png" sizes="32x32" href="regular_scaled_sim_exp_cam_6.png">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</title>
-  <meta name="description" content="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction" />
+  <meta name="description" content="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -17,14 +17,12 @@
       --fg: #111111;
       --muted: #5f6673;
       --line: #d9dee7;
-      --line-strong: #c5cfdd;
       --link: #184eaa;
       --link-hover: #123a7d;
-      --chip: #eef2f8;
       --code: #0f172a;
       --radius: 12px;
       --max: 1080px;
-      --accent: #8c1d18;
+      --body-copy-size: 16px;
     }
 
     * {
@@ -42,6 +40,21 @@
       font-family: "Noto Sans", sans-serif;
       font-size: 16px;
       line-height: 1.7;
+    }
+
+    .gif-caption,
+    .hero-caption,
+    figcaption,
+    .media-title,
+    h4,
+    h3,
+    h2,
+    h1,
+    p,
+    strong,
+    figure,
+    footer {
+      color: #000 !important;
     }
 
     a {
@@ -65,18 +78,40 @@
       text-align: center;
     }
 
-    h1,
-    h2,
-    h3 {
-      font-family: "Noto Sans", sans-serif;
-    }
-
     h1 {
       font-size: 44px;
       line-height: 1.08;
       letter-spacing: -0.025em;
       margin: 0 0 14px;
       text-wrap: balance;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 0 0 14px;
+      letter-spacing: -0.015em;
+      text-align: left;
+    }
+
+    .paper-header h2 {
+      text-align: center;
+    }
+
+    section>h2 {
+      text-align: center;
+    }
+
+    h3 {
+      margin: 0 0 14px;
+    }
+
+    h4 {
+      margin: 0 0 10px;
+    }
+
+    p {
+      font-size: var(--body-copy-size);
+      margin: 0 0 12px;
     }
 
     .authors {
@@ -95,26 +130,15 @@
       font-size: 18px;
     }
 
-    hr {
-      border: 0;
-      border-top: 1px solid var(--line);
-      margin: 28px 0;
-    }
-
     section {
       margin: 26px 0;
-    }
-
-    h2 {
-      font-size: 28px;
-      margin: 0 0 14px;
-      letter-spacing: -0.015em;
+      padding-bottom: 28px;
       border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
     }
 
-    p {
-      margin: 0 0 12px;
+    section:last-of-type {
+      padding-bottom: 0;
+      border-bottom: 0;
     }
 
     .card {
@@ -138,26 +162,20 @@
 
     figure img {
       width: 100%;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
       display: block;
       background: #fff;
     }
 
     figcaption {
       color: var(--muted);
-      font-size: 13px;
+      font-size: var(--body-copy-size);
       margin-top: 8px;
       line-height: 1.5;
     }
 
-    .hero-figure {
-      margin: 0;
-    }
-
     .hero-caption {
       margin-top: 12px;
-      font-size: 14px;
+      font-size: var(--body-copy-size);
       line-height: 1.6;
       color: var(--muted);
       max-width: 950px;
@@ -174,12 +192,12 @@
       color: #e5e7eb;
       border-radius: 10px;
       overflow: auto;
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 13px;
+      font-size: var(--body-copy-size);
     }
 
     footer {
@@ -200,14 +218,15 @@
       border-radius: 12px;
       background: #fff;
       padding: 16px;
-      display: grid;
-      grid-template-rows: auto 1fr;
+      display: flex;
+      flex-direction: column;
       height: 100%;
+      min-height: 0;
     }
 
     .teaser-col h3 {
-      margin: 0 0 14px;
       font-size: 18px;
+      font-weight: 700;
       line-height: 1.25;
       text-align: center;
     }
@@ -222,10 +241,6 @@
       grid-template-rows: repeat(3, 1fr);
     }
 
-    .teaser-col--two-items .teaser-items {
-      grid-template-rows: repeat(2, 1fr);
-    }
-
     .teaser-item {
       display: grid;
       grid-template-rows: 1fr auto;
@@ -237,10 +252,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      border-radius: var(--radius);
-      /* border: 1px solid var(--line);
-       */
-      border: NONE;
+      border: none;
       background: #000;
       object-fit: contain;
     }
@@ -250,94 +262,68 @@
       margin-top: 8px;
     }
 
-    .teaser-recon-flow {
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 14px;
-      min-height: 0;
-      align-content: start;
-    }
-
-    .teaser-stack-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 8px 0 2px;
-      min-height: 0;
-    }
-
-    .teaser-stack {
-      position: relative;
-      width: min(100%, 280px);
-      aspect-ratio: 1 / 1;
-    }
-
-    .teaser-stack img {
-      position: absolute;
-      width: 78%;
-      height: auto;
-      border-radius: var(--radius);
-      object-fit: contain;
-    }
-
     .teaser-arrow-label {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      width: min(100%, 225px);
+      min-height: 92px;
+      margin: 0 auto calc(var(--pad-2) + 55px);
+      padding: 14px 12px 18px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 700;
       text-align: center;
-      color: var(--fg);
-      font-size: 14px;
-      line-height: 1.45;
-      font-weight: 600;
-      padding: 2px 4px;
     }
 
-.teaser-arrow-label {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  min-height: 92px;
-  margin: 6px auto 10px;
-  padding: 14px 12px 18px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 13px;
-  line-height: 1.3;
-  font-weight: 700;
-  text-align: center;
-  /* border-radius: 10px 10px 0 0; */
-}
+    .teaser-arrow-label::after {
+      content: "";
+      position: absolute;
+      background: #2563eb;
+      left: 50%;
+      bottom: -60px;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 75px;
+      clip-path: polygon(50% 100%, 0 0, 100% 0);
+    }
 
+    .teaser-recon-flow {
+      --pad-2: 18px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-/* bottom arrow head */
-.teaser-arrow-label::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -28px;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 28px;
-  background: var(--accent);
-  clip-path: polygon(50% 100%, 0 0, 100% 0);
-}
-
+    .teaser-stack-figure,
     .teaser-recon-video {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      min-height: 0;
+      margin: 0;
+      width: 100%;
+      display: block;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .teaser-stack-figure {
+      margin-bottom: var(--pad-2);
+    }
+
+    .teaser-stack-figure img {
+      width: min(100%, 280px);
+      display: block;
+      margin: 0 auto;
+      background: #fff;
     }
 
     .teaser-recon-video video {
       width: 100%;
-      height: 100%;
       display: block;
-      border-radius: var(--radius);
-      background: #000;
-      object-fit: contain;
     }
 
     .results-intro {
@@ -360,27 +346,16 @@
       padding: 20px 22px;
     }
 
-    .results-group h3 {
-      margin: 0 0 18px;
-      font-size: 24px;
-      line-height: 1.25;
-    }
-
     .experiment {
-      padding: 18px 0 0;
-      border-top: 1px solid var(--line);
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--bg-soft);
       margin-top: 18px;
     }
 
     .experiment:first-of-type {
-      border-top: 0;
       margin-top: 0;
-      padding-top: 0;
-    }
-
-    .experiment-title {
-      font-size: 21px;
-      margin-bottom: 14px;
     }
 
     .experiment-body {
@@ -396,7 +371,7 @@
     }
 
     .media-title {
-      font-size: 14px;
+      font-size: var(--body-copy-size);
       font-weight: 600;
       text-align: center;
       margin: 0 0 8px;
@@ -407,13 +382,11 @@
       order: 2;
       margin: 8px 0 0;
       color: var(--muted);
-      font-size: 13px;
       font-weight: 400;
       line-height: 1.5;
     }
 
     .view-block {
-      margin: 0;
       width: 100%;
     }
 
@@ -445,9 +418,12 @@
       height: auto;
       max-width: 100%;
       border-radius: var(--radius);
-      border: 1px solid var(--line);
       background: #fff;
       object-fit: contain;
+    }
+
+    .still-img {
+      border: 1px solid var(--line);
     }
 
     .gif-img {
@@ -457,10 +433,29 @@
 
     .gif-caption {
       color: var(--muted);
-      font-size: 13px;
+      font-size: var(--body-copy-size);
       margin-top: 8px;
       line-height: 1.5;
       text-align: center;
+    }
+
+    .experiment-notes-box {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--fg);
+      font-size: var(--body-copy-size);
+      line-height: 1.65;
+      white-space: normal;
+    }
+
+    .experiment-notes-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .experiment-notes-box strong {
+      font-size: inherit;
     }
 
     @media (max-width: 900px) {
@@ -486,62 +481,6 @@
       }
     }
 
-    /* front image */
-    .teaser-stack img:nth-of-type(1) {
-      left: 0;
-      bottom: 0;
-      z-index: 4;
-    }
-
-    /* second image moved closer to the first */
-    .teaser-stack img:nth-of-type(2) {
-      left: 7%;
-      bottom: 7%;
-      z-index: 3;
-    }
-    
-    
-
-    /* dots between second and third */
-    .teaser-stack-dots {
-      position: absolute;
-      left: 88%;
-      bottom: 13%;
-      z-index: 2;
-      font-size: 28px;
-      line-height: 1;
-      color: var(--muted);
-      letter-spacing: 2px;
-      font-weight: 700;
-      user-select: none;
-
-      transform: rotate(125deg)
-    }
-
-    /* back image */
-    .teaser-stack img:nth-of-type(3) {
-      left: 22%;
-      bottom: 28%;
-      z-index: 1;
-    }
-
-    .experiment-notes .media-title {
-      text-align: left;
-      margin-bottom: 10px;
-    }
-
-    .experiment-notes-box {
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--bg-soft);
-      padding: 14px 16px;
-      color: var(--fg);
-      font-size: 15px;
-      line-height: 1.65;
-      white-space: normal;
-      text-indent: 2em;
-    }
-
     @media (max-width: 640px) {
       h1 {
         font-size: 34px;
@@ -565,14 +504,11 @@
 <body>
   <div class="wrap">
     <header class="paper-header">
-
       <h1>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</h1>
       <h2>To appear in CVPR 2026!</h2>
 
-
       <p class="authors">
-        <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David
-          Novikov</a>,&nbsp;
+        <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David Novikov</a>,&nbsp;
         <a href="https://www.linkedin.com/in/eilon-vaknin-laufer-311410247/" target="_blank" rel="noopener">Eilon Vaknin
           Laufer</a>,&nbsp;
         <a href="https://tnarek.github.io/" target="_blank" rel="noopener">Narek Tumanyan</a>,&nbsp;
@@ -582,121 +518,98 @@
       <p class="affil">Weizmann Institute of Science</p>
 
       <div class="buttons is-centered">
-
-        <!-- Paper -->
         <a href="The_paper.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
-          <span class="icon">
-            <i class="fas fa-file-pdf"></i>
-          </span>
+          <span class="icon"><i class="fas fa-file-pdf"></i></span>
           <span>Paper</span>
         </a>
 
-        <!-- BibTeX -->
         <a href="#citation" class="button is-dark is-rounded">
-          <span class="icon">
-            <i class="fas fa-quote-right"></i>
-          </span>
+          <span class="icon"><i class="fas fa-quote-right"></i></span>
           <span>BibTeX</span>
         </a>
 
-        <!-- Code -->
-        <a href="#" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
-          <span class="icon">
-            <i class="fab fa-github"></i>
-          </span>
+        <a href="#" class="button is-dark is-rounded">
+          <span class="icon"><i class="fab fa-github"></i></span>
           <span>Code</span>
         </a>
 
-        <!-- Poster -->
         <a href="poster.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
-          <span class="icon">
-            <i class="fas fa-file-pdf"></i>
-          </span>
+          <span class="icon"><i class="fas fa-file-pdf"></i></span>
           <span>Poster</span>
         </a>
 
-        <!-- Video -->
-        <a href="#" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
-          <span class="icon">
-            <i class="fab fa-youtube"></i>
-          </span>
+        <a href="#" class="button is-dark is-rounded">
+          <span class="icon"><i class="fab fa-youtube"></i></span>
           <span>Video</span>
         </a>
-
       </div>
     </header>
 
-
     <section id="teaser">
-      <figure class="hero-figure">
+      <figure>
         <div class="teaser-grid">
-
           <div class="teaser-col teaser-col--three-items">
-            <h3>Traditional Camera Capture</h3>
+            <h3>Traditional Camera Capture <br> 60 FPS</h3>
             <div class="teaser-items">
               <figure class="teaser-item">
-                  <video muted autoplay playsinline loop preload="auto">
-                    <source src="assets/teaser_figure/overview_regular_capture_sped_up_part_web.mp4" type="video/mp4">
+                <video muted autoplay playsinline loop preload="auto">
+                  <source src="assets/teaser_figure/overview_regular_capture_sped_up_part_web.mp4" type="video/mp4">
                 </video>
-                <figcaption>Global perspective</figcaption>
+                <figcaption>Scene overview with constant illumination</figcaption>
               </figure>
 
               <figure class="teaser-item">
                 <img src="assets/teaser_figure/single_camera_regular_capture_final_frame_1.png"
                   alt="Traditional camera capture final image">
-                <figcaption>Captured image</figcaption>
+                <figcaption>Captured image with constant illumination</figcaption>
               </figure>
 
               <figure class="teaser-item">
                 <video muted autoplay playsinline loop preload="auto">
                   <source src="assets/teaser_figure/single_camera_regular_capture_frame_1_web.mp4" type="video/mp4">
                 </video>
-                <figcaption>Image formation</figcaption>
+                <figcaption>Image formation with constant illumination</figcaption>
               </figure>
             </div>
           </div>
 
           <div class="teaser-col teaser-col--three-items">
-            <h3>Our Color-Encoded Capture</h3>
+            <h3>Our Color-Encoded Capture <br> 60 FPS</h3>
             <div class="teaser-items">
               <figure class="teaser-item">
                 <video muted autoplay playsinline loop preload="auto">
                   <source src="assets/teaser_figure/overview_colored_capture_sped_up_part_web.mp4" type="video/mp4">
                 </video>
-                <figcaption>Global perspective</figcaption>
+                <figcaption>Scene overview with color-encoded illumination</figcaption>
               </figure>
 
               <figure class="teaser-item">
                 <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_1.png"
                   alt="Color encoded capture final image">
-                <figcaption>Captured image</figcaption>
+                <figcaption>Captured image with color-encoded illumination</figcaption>
               </figure>
 
               <figure class="teaser-item">
                 <video muted autoplay playsinline loop preload="auto">
                   <source src="assets/teaser_figure/single_camera_colored_capture_cam_1_web.mp4" type="video/mp4">
                 </video>
-                <figcaption>Image formation</figcaption>
+                <figcaption>Image formation with color-encoded illumination</figcaption>
               </figure>
             </div>
           </div>
 
           <div class="teaser-col">
-            <h3>Volumetric Recovery of High-Speed Motion</h3>
-            <div class="teaser-recon-flow">
-              <div class="teaser-stack-wrap">
-                <div class="teaser-stack" aria-label="Stacked multi-camera captured images">
-                  <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_1.png"
-                    alt="Stacked camera image 1">
-                  <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_2.png"
-                    alt="Stacked camera image 2">
-                  <div class="teaser-stack-dots" aria-hidden="true">...</div>
-                  <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_3.png"
-                    alt="Stacked camera image 3">
-                </div>
-              </div>
+            <h3>Volumetric High-Speed Recovery <br> 600 FPS</h3>
 
-              <div class="teaser-arrow-label">Our volumetric reconstruction and rendering method</div>
+            <div class="teaser-recon-flow">
+              <figure class="teaser-stack-figure">
+                <img src="assets/teaser_figure/image_stack.png" alt="Stack of captured multi-camera images">
+                <figcaption>Captured images</figcaption>
+              </figure>
+
+              <div class="teaser-arrow-label">
+                Our volumetric reconstruction and rendering method
+              </div>
 
               <figure class="teaser-recon-video">
                 <video muted autoplay playsinline loop preload="auto">
@@ -706,27 +619,23 @@
               </figure>
             </div>
           </div>
-
         </div>
 
         <figcaption class="hero-caption">
-          <strong>Figure 1.</strong>
           Our method encodes high speed frames using sequential color illumination,
-          enabling high-speed dynamic volumetric reconstruction from synchronized low-frame-rate cameras.
+          enabling high-speed dynamic volumetric reconstruction from synchronized low-frame-rate cameras (in our case
+          taking 60 fps cameras to 600 fps!).
           Left: conventional capture. Middle: our color-encoded capture. Right: recovered volumetric dynamics
           and novel-view rendering.
         </figcaption>
       </figure>
     </section>
 
-    <hr />
-
     <section id="main-results">
       <h2>Main results</h2>
 
       <div class="card results-intro">
         <div>
-
           <p>
             We provide some simulated and real results here to show the power of our method. We show more results after
             the method section, including some special cases.
@@ -734,17 +643,13 @@
           <p>
             We show the training cameras in red and the novel-view cameras in green as shown to the right. We show only
             novel viewpoints in the GIFs below. The camera plot is synchronized with the GIF motion.
-
           </p>
         </div>
         <img src="assets/cameras.png" alt="Camera layout visualization">
       </div>
 
       <div class="card results-group" id="part1">
-        <h3>Recovering Volumetric Scenes at High Speeds</h3>
-
         <div class="experiment" id="exp-explosion-sim">
-          <div class="experiment-title">Explosion Scene - Simulated</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -777,17 +682,18 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here, we show the power of our method to disentangle many moving objects
-                at the same time and find their trajectories in space and time. The cubes fly in different directions
-                and have overlapping explosions. As we can see from the reconstruction, the cubes and their individual
-                motions are reconstructed well.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Explosion Scene - Simulated</strong></p>
+                <p>Experimental details: Here, we show the power of our method to disentangle many moving objects at
+                  the same time and find their trajectories in space and time. The cubes fly in different directions
+                  and have overlapping explosions. As we can see from the reconstruction, the cubes and their
+                  individual motions are reconstructed well.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="experiment" id="exp-spinning-disk">
-          <div class="experiment-title">Spinning Disk with Text</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -823,16 +729,17 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here, we capture an object on a fast-rotating disk. As seen in the main
-                paper, the camera, at its fastest speed, is not fast enough to capture the object's motion. Our method
-                recovers the high-speed motion in both space and time.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Spinning Disk with Text</strong></p>
+                <p>Experimental details: Here, we capture an object on a fast-rotating disk. As seen in the main
+                  paper, the camera, at its fastest speed, is not fast enough to capture the object's motion. Our
+                  method recovers the high-speed motion in both space and time.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="experiment" id="exp-chess-pieces">
-          <div class="experiment-title">Multiple Chess Pieces</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -865,10 +772,12 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here, we capture three chess pieces falling downward. Despite some
-                visible artifacts, our method recovers the volumetric motion of the chess pieces, enabling high-speed
-                novel view rendering.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Multiple Chess Pieces</strong></p>
+                <p>Experimental details: Here, we capture three chess pieces falling downward. Despite some visible
+                  artifacts, our method recovers the volumetric motion of the chess pieces, enabling high-speed novel
+                  view rendering.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -883,7 +792,6 @@
         speed.
         This light temporally encodes the scene's dynamics into the captured images.
         We synchronize the cameras to the light strobes so that each camera captures the same information.
-
         Second, we perform reconstruction, where we use a dynamic Gaussian Splatting pipeline to decode the captured
         images and recover the scene's high-speed volumetric dynamics.
       </p>
@@ -918,20 +826,20 @@
             <img src="assets/method/cam_and_light_setup.png" alt="Step 2: Synchronizing light to cameras">
           </figure>
         </div>
-      </div>
 
-      <div class="card">
-        <h2>Part 2: Training and Reconstruction</h2>
+        <h2>Part 2: Training and reconstruction</h2>
 
         <div class="media">
           <figure>
             <h4>Step 3: Preprocessing</h4>
-            To preprocess the images for reconstruction, we develop a statistical model of the background for each
-            camera, and then remove the background from the captured images.
-            Next, we only perform our method on the foreground images.
-            We also perform a spectral calibration across cameras using a 24-tile Spyder color checker (SCK300) and
-            find a geometric calibration for our scene using a calibration object and COLMAP. Note that since we are
-            using the 8 instances of the same camera, the spectral response is similar across cameras.
+            <p>
+              To preprocess the images for reconstruction, we develop a statistical model of the background for each
+              camera, and then remove the background from the captured images. Next, we only perform our method on the
+              foreground images. We also perform a spectral calibration across cameras using a 24-tile Spyder color
+              checker (SCK300) and find a geometric calibration for our scene using a calibration object and COLMAP.
+              Note that since we are using 8 instances of the same camera, the spectral response is similar across
+              cameras.
+            </p>
 
             <img src="assets/method/preprocessing.png" alt="Step 3: Preprocessing">
           </figure>
@@ -943,10 +851,8 @@
               adapt from <a href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>, for a
               camera <b><i>C<sub>i</sub></i></b> for 10 time stamps (which correspond to the 10 strobe colors).
               Next, we take the colors from the images captured by camera <b><i>C<sub>i</sub></i></b> and multiply them
-              by the
-              rendered motion for each time stamp and sum over these images to
-              produce a final colored image which should correspond to the captured image for camera
-              <b><i>C<sub>i</sub></i></b>.
+              by the rendered motion for each time stamp and sum over these images to produce a final colored image
+              which should correspond to the captured image for camera <b><i>C<sub>i</sub></i></b>.
             </p>
             <img src="assets/method/reconstruction_forward.png" alt="Step 4: Forward pass">
           </figure>
@@ -955,10 +861,9 @@
             <h4>Step 5: Loss Functions</h4>
             <p>
               Our loss function has two components: a L<sub>1</sub> loss between the image output by our model and the
-              captured
-              image for each camera, and total variation loss on the inverse depth images to encourage smoothness in the
-              scene's
-              geometry.
+              captured image for each camera, and total variation loss on the inverse depth images to encourage
+              smoothness in the
+              scene's geometry.
             </p>
             <img src="assets/method/reconstruction_loss.png" alt="Step 5: Loss functions">
           </figure>
@@ -967,12 +872,10 @@
     </section>
 
     <section id="results">
-      <h2>Additional results</h2>
-      <div class="card results-group" id="part2">
-        <h3>Testing Special Cases</h3>
+      <h2>Special cases and additional results</h2>
 
+      <div class="card results-group" id="part2">
         <div class="experiment" id="exp-yellow-paper">
-          <div class="experiment-title">Non-white reflectance</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -1005,17 +908,18 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here, we demonstrate that our method is not limited to pure white
-                albedos. The yellow paper reflects blue light poorly, diminishing the intensity of the bluish strobes.
-                Despite this, we can recover the motion well. We encourage you to compare this result to the
-                experiment with the white paper and "CVPR" text.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Non-white reflectance</strong></p>
+                <p>Experimental details: Here, we demonstrate that our method is not limited to pure white albedos.
+                  The yellow paper reflects blue light poorly, diminishing the intensity of the bluish strobes.
+                  Despite this, we can recover the motion well. We encourage you to compare this result to the
+                  experiment with the white paper and "CVPR" text.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="experiment" id="exp-single-camera">
-          <div class="experiment-title">Single Camera View - Simulated</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -1034,17 +938,18 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">In this experiment, we show that we are able to reconstruct the scene
-                even with a single camera. As we can see, the motion is still recovered well for the single strobed
-                image. We don't show the motion over multiple camera positions, as a traditional single-camera image is
-                not sufficient to reconstruct a 3D scene.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Single Camera View - Simulated</strong></p>
+                <p>Experimental details: In this experiment, we show that we are able to reconstruct the scene even
+                  with a single camera. As we can see, the motion is still recovered well for the single strobed
+                  image. We don't show the motion over multiple camera positions, as a traditional single-camera image
+                  is not sufficient to reconstruct a 3D scene.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="experiment" id="exp-noise-bg">
-          <div class="experiment-title">Non-negligible Background - Simulated</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -1077,20 +982,16 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we simulate the effect of a non-negligible stationary background.
-                The recovery shows that the object motion is still recoverable in the background's presence; however,
-                some artifacts begin to emerge.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Non-negligible Background - Simulated</strong></p>
+                <p>Experimental details: Here we simulate the effect of a non-negligible stationary background. The
+                  recovery shows that the object motion is still recoverable in the background's presence; however,
+                  some artifacts begin to emerge.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="card results-group" id="part3">
-        <h3>Additional Experimental Results</h3>
-
         <div class="experiment" id="exp-nerf-dart">
-          <div class="experiment-title">Nerf Dart</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -1123,19 +1024,19 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we capture a Nerf dart flying across the screen and hiting a wall
-                before bouncing backwards. For this experiment, we positioned the cameras to be roughly in a row to
-                capture the full range of the Nerf dart's motion.
-
-                Many prior works have used Nerf darts as simple, fast-moving, lab-safe objects for capture. However,
-                ours is the first to demonstrate a volumetric, high-speed rendering of their motion.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Nerf Dart</strong></p>
+                <p>Experimental details: Here we capture a Nerf dart flying across the screen and hiting a wall before
+                  bouncing backwards. For this experiment, we positioned the cameras to be roughly in a row to capture
+                  the full range of the Nerf dart's motion.</p>
+                <p>Many prior works have used Nerf darts as simple, fast-moving, lab-safe objects for capture.
+                  However, ours is the first to demonstrate a volumetric, high-speed rendering of their motion.</p>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="experiment" id="exp-particles">
-          <div class="experiment-title">Particles</div>
           <div class="experiment-body">
             <div class="experiment-media">
               <div class="view-block">
@@ -1168,17 +1069,18 @@
               </div>
             </div>
             <div class="experiment-notes">
-              <div class="media-title">Experiment Details</div>
-              <div class="experiment-notes-box">Here we capture small identical 'particles'. We covered metal hex nuts
-                with white paper and threw them in front of the cameras. We can decouple the individual particles and
-                show their relative positions in space as they move.</div>
+              <div class="experiment-notes-box">
+                <p><strong>Particles</strong></p>
+                <p>Experimental details: Here we capture small identical 'particles'. We covered metal hex nuts with
+                  white paper and threw them in front of the cameras. We can decouple the individual particles and
+                  show their relative positions in space as they move.</p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
-
-    <hr />
 
     <section id="citation">
       <h2>BibTeX</h2>
@@ -1207,15 +1109,13 @@
         return;
       }
 
-      const rows = document.querySelectorAll('.gif-row');
-
-      rows.forEach(row => {
+      document.querySelectorAll('.gif-row').forEach(row => {
         const still = row.querySelector('.still-img');
         const gif = row.querySelector('.gif-img');
 
-        if (!still || !gif) return;
-        if (!still.naturalWidth || !still.naturalHeight) return;
-        if (!gif.naturalWidth || !gif.naturalHeight) return;
+        if (!still || !gif || !still.naturalWidth || !still.naturalHeight || !gif.naturalWidth || !gif.naturalHeight) {
+          return;
+        }
 
         const rowStyle = getComputedStyle(row);
         const gap = parseFloat(rowStyle.gap || rowStyle.columnGap || 0);
@@ -1231,23 +1131,14 @@
           parseFloat(gifStyle.borderLeftWidth) +
           parseFloat(gifStyle.borderRightWidth);
 
-        const availableWidth = Math.max(
-          0,
-          row.clientWidth - gap - stillExtra - gifExtra
-        );
-
+        const availableWidth = Math.max(0, row.clientWidth - gap - stillExtra - gifExtra);
         const stillAspect = still.naturalWidth / still.naturalHeight;
         const gifAspect = gif.naturalWidth / gif.naturalHeight;
-
         const targetHeight = availableWidth / (stillAspect + gifAspect);
 
-        const stillWidth = targetHeight * stillAspect;
-        const gifWidth = targetHeight * gifAspect;
-
-        still.style.width = `${stillWidth}px`;
+        still.style.width = `${targetHeight * stillAspect}px`;
         still.style.height = `${targetHeight}px`;
-
-        gif.style.width = `${gifWidth}px`;
+        gif.style.width = `${targetHeight * gifAspect}px`;
         gif.style.height = `${targetHeight}px`;
       });
     }
