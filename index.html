@@ -79,7 +79,7 @@
     }
 
     h1 {
-      font-size: 44px;
+      font-size: 54px;
       line-height: 1.08;
       letter-spacing: -0.025em;
       margin: 0 0 14px;
@@ -87,8 +87,8 @@
     }
 
     h2 {
-      font-size: 28px;
-      margin: 0 0 14px;
+      font-size: 38px;
+      margin: 0 0 19px;
       letter-spacing: -0.015em;
       text-align: left;
     }
@@ -102,7 +102,8 @@
     }
 
     h3 {
-      margin: 0 0 14px;
+      font-size: 25px;
+      margin: 0 0 10px;
     }
 
     h4 {
@@ -207,54 +208,75 @@
     }
 
     .teaser-grid {
+      --teaser-media-width: 300px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
       gap: 18px;
       align-items: stretch;
     }
 
-    .teaser-col {
-      border: 1px solid var(--line);
-      border-radius: 12px;
+    .teaser-panel {
+      border: 2px solid var(--line);
+      border-radius: 18px;
       background: #fff;
-      padding: 16px;
       display: flex;
       flex-direction: column;
       height: 100%;
       min-height: 0;
     }
 
-    .teaser-col h3 {
+    .teaser-panel__content {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px;
+      min-height: 0;
+      flex: 1 1 auto;
+    }
+
+    .teaser-panel__content--split {
+      position: relative;
+      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+      background: rgba(37, 99, 235, 0.03);
+    }
+
+    .teaser-panel__title {
+      margin: 0;
+      grid-column: 1 / -1;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       font-size: 18px;
       font-weight: 700;
-      line-height: 1.25;
-      text-align: center;
+      line-height: 1.3;
     }
 
     .teaser-items {
       display: grid;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
       gap: 14px;
       min-height: 0;
-    }
-
-    .teaser-col--three-items .teaser-items {
-      grid-template-rows: repeat(3, 1fr);
+      height: 100%;
     }
 
     .teaser-item {
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: minmax(0, 1fr) auto;
       min-height: 0;
     }
 
     .teaser-item video,
     .teaser-item img {
-      width: 100%;
+      width: min(100%, var(--teaser-media-width));
       height: 100%;
       display: block;
+      margin: 0 auto;
       border: none;
-      background: #000;
-      object-fit: contain;
+      object-fit: cover;
     }
 
     .teaser-item figcaption {
@@ -262,15 +284,29 @@
       margin-top: 8px;
     }
 
+    .teaser-items>.teaser-item:last-child figcaption,
+    .teaser-stack-figure figcaption {
+      min-height: 3em;
+    }
+
+    .teaser-items>.teaser-item:first-child {
+      align-self: start;
+    }
+
+    .teaser-items>.teaser-item:last-child {
+      align-self: end;
+    }
+
     .teaser-arrow-label {
       position: relative;
+      z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       width: min(100%, 225px);
       min-height: 92px;
-      margin: 0 auto calc(var(--pad-2) + 55px);
-      padding: 14px 12px 18px;
+      margin: 0 auto;
+      padding: clamp(14px, 2vw, 22px) 12px;
       background: #2563eb;
       color: #fff;
       font-size: 20px;
@@ -282,48 +318,88 @@
     .teaser-arrow-label::after {
       content: "";
       position: absolute;
+      z-index: -1;
       background: #2563eb;
       left: 50%;
-      bottom: -60px;
+      bottom: -50px;
       transform: translateX(-50%);
-      width: 150%;
-      height: 75px;
+      width: 130%;
+      height: 60px;
       clip-path: polygon(50% 100%, 0 0, 100% 0);
     }
 
+    .teaser-arrow-label--up {
+      align-self: center;
+    }
+
+    .teaser-arrow-label--up::after {
+      top: -50px;
+      bottom: auto;
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+    }
+
     .teaser-recon-flow {
-      --pad-2: 18px;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+      row-gap: clamp(12px, 2vw, 24px);
+      align-items: stretch;
     }
 
     .teaser-stack-figure,
     .teaser-recon-video {
       margin: 0;
       width: 100%;
-      display: block;
-      flex-direction: column;
-      align-items: center;
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
       text-align: center;
+      min-height: 0;
+    }
+
+    .teaser-recon-video {
+      align-self: start;
     }
 
     .teaser-stack-figure {
-      margin-bottom: var(--pad-2);
+      align-self: end;
+    }
+
+    .teaser-recon-flow__overlay-arrow {
+      position: absolute;
+      left: 49.4%;
+      bottom: 110px;
+      width: 43px;
+      height: 0;
+      border-top: 9px solid #dc2626;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .teaser-recon-flow__overlay-arrow::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 50%;
+      width: 27px;
+      height: 27px;
+      border-top: 9px solid #dc2626;
+      border-right: 9px solid #dc2626;
+      transform: translateY(calc(-50% - 4.5px)) rotate(45deg);
+      transform-origin: center;
     }
 
     .teaser-stack-figure img {
-      width: min(100%, 280px);
+      width: min(100%, var(--teaser-media-width));
       display: block;
       margin: 0 auto;
-      background: #fff;
+      background: transparent;
     }
 
     .teaser-recon-video video {
-      width: 100%;
+      width: min(100%, var(--teaser-media-width));
       display: block;
+      margin: 0 auto;
     }
 
     .results-intro {
@@ -463,6 +539,14 @@
         grid-template-columns: 1fr;
       }
 
+      .teaser-panel__content--split {
+        grid-template-columns: 1fr;
+      }
+
+      .teaser-recon-flow__overlay-arrow {
+        display: none;
+      }
+
       .results-intro,
       .experiment-body {
         grid-template-columns: 1fr;
@@ -548,75 +632,81 @@
     <section id="teaser">
       <figure>
         <div class="teaser-grid">
-          <div class="teaser-col teaser-col--three-items">
-            <h3>Traditional Camera Capture <br> 60 FPS</h3>
-            <div class="teaser-items">
-              <figure class="teaser-item">
-                <video muted autoplay playsinline loop preload="auto">
-                  <source src="assets/teaser_figure/overview_regular_capture_sped_up_part_web.mp4" type="video/mp4">
-                </video>
-                <figcaption>Scene overview with constant illumination</figcaption>
-              </figure>
+          <div class="teaser-panel">
+            <div class="teaser-panel__content">
+              <p class="teaser-panel__title">Conventional camera capture</p>
+              <div class="teaser-items">
+                <figure class="teaser-item">
+                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
+                    data-sync-group="teaser-top-row">
+                    <source src="assets/teaser_figure/overview_regular_capture_middle_section_web.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Scene overview with constant illumination</figcaption>
+                </figure>
 
-              <figure class="teaser-item">
-                <img src="assets/teaser_figure/single_camera_regular_capture_final_frame_1.png"
-                  alt="Traditional camera capture final image">
-                <figcaption>Captured image with constant illumination</figcaption>
-              </figure>
+                <figure class="teaser-item">
+                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
+                    data-sync-group="teaser-middle-row">
+                    <source src="assets/teaser_figure/single_camera_regular_capture_frame_1_web.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Image formation with constant illumination</figcaption>
+                </figure>
 
-              <figure class="teaser-item">
-                <video muted autoplay playsinline loop preload="auto">
-                  <source src="assets/teaser_figure/single_camera_regular_capture_frame_1_web.mp4" type="video/mp4">
-                </video>
-                <figcaption>Image formation with constant illumination</figcaption>
-              </figure>
+                <figure class="teaser-item">
+                  <img src="assets/teaser_figure/single_camera_regular_capture_final_frame_1.png"
+                    alt="Traditional camera capture final image">
+                  <figcaption>Captured image with constant illumination</figcaption>
+                </figure>
+              </div>
             </div>
           </div>
 
-          <div class="teaser-col teaser-col--three-items">
-            <h3>Our Color-Encoded Capture <br> 60 FPS</h3>
-            <div class="teaser-items">
-              <figure class="teaser-item">
-                <video muted autoplay playsinline loop preload="auto">
-                  <source src="assets/teaser_figure/overview_colored_capture_sped_up_part_web.mp4" type="video/mp4">
-                </video>
-                <figcaption>Scene overview with color-encoded illumination</figcaption>
-              </figure>
+          <div class="teaser-panel">
+            <div class="teaser-panel__content teaser-panel__content--split">
+              <p class="teaser-panel__title">Our color-encoded capture and volumetric scene reconstruction</p>
+              <div class="teaser-items">
+                <figure class="teaser-item">
+                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
+                    data-sync-group="teaser-top-row">
+                    <source src="assets/teaser_figure/overview_colored_capture_web.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Scene overview with color-encoded illumination</figcaption>
+                </figure>
 
-              <figure class="teaser-item">
-                <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_1.png"
-                  alt="Color encoded capture final image">
-                <figcaption>Captured image with color-encoded illumination</figcaption>
-              </figure>
+                <figure class="teaser-item">
+                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
+                    data-sync-group="teaser-middle-row">
+                    <source src="assets/teaser_figure/single_camera_colored_capture_cam_1_web.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Image formation with color-encoded illumination</figcaption>
+                </figure>
 
-              <figure class="teaser-item">
-                <video muted autoplay playsinline loop preload="auto">
-                  <source src="assets/teaser_figure/single_camera_colored_capture_cam_1_web.mp4" type="video/mp4">
-                </video>
-                <figcaption>Image formation with color-encoded illumination</figcaption>
-              </figure>
-            </div>
-          </div>
-
-          <div class="teaser-col">
-            <h3>Volumetric High-Speed Recovery <br> 600 FPS</h3>
-
-            <div class="teaser-recon-flow">
-              <figure class="teaser-stack-figure">
-                <img src="assets/teaser_figure/image_stack.png" alt="Stack of captured multi-camera images">
-                <figcaption>Captured images</figcaption>
-              </figure>
-
-              <div class="teaser-arrow-label">
-                Our volumetric reconstruction and rendering method
+                <figure class="teaser-item">
+                  <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_1.png"
+                    alt="Color encoded capture final image">
+                  <figcaption>Captured image with color-encoded illumination</figcaption>
+                </figure>
               </div>
 
-              <figure class="teaser-recon-video">
-                <video muted autoplay playsinline loop preload="auto">
-                  <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
-                </video>
-                <figcaption>Recovered volumetric dynamics and novel-view rendering</figcaption>
-              </figure>
+              <div class="teaser-recon-flow__overlay-arrow" aria-hidden="true"></div>
+
+              <div class="teaser-recon-flow">
+                <figure class="teaser-recon-video">
+                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500">
+                    <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Recovered volumetric dynamics and novel-view rendering</figcaption>
+                </figure>
+
+                <div class="teaser-arrow-label teaser-arrow-label--up">
+                  Our volumetric reconstruction and rendering method
+                </div>
+
+                <figure class="teaser-stack-figure">
+                  <img src="assets/teaser_figure/image_stack.png" alt="Stack of captured multi-camera images">
+                  <figcaption>Captured images<br aria-hidden="true"></figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
@@ -625,8 +715,7 @@
           Our method encodes high speed frames using sequential color illumination,
           enabling high-speed dynamic volumetric reconstruction from synchronized low-frame-rate cameras (in our case
           taking 60 fps cameras to 600 fps!).
-          Left: conventional capture. Middle: our color-encoded capture. Right: recovered volumetric dynamics
-          and novel-view rendering.
+          Left: conventional camera capture. Right: our color-encoded capture and volumetric scene reconstruction.
         </figcaption>
       </figure>
     </section>
@@ -797,7 +886,7 @@
       </p>
 
       <div class="card">
-        <h2>Part 1: Capture</h2>
+        <h3>Part 1: Capture</h3>
 
         <div class="media">
           <figure>
@@ -823,7 +912,7 @@
               synchronize it to the cameras' capture. We show our circuit schematic and a photo of our physical setup.
               We use the MOBL-300x150-RGBW light and IDS UI-3240CP cameras.
             </p>
-            <img src="assets/method/cam_and_light_setup.png" alt="Step 2: Synchronizing light to cameras">
+            <img src="assets/method/cam_and_light_setup_v2.png" alt="Step 2: Synchronizing light to cameras">
           </figure>
         </div>
 
@@ -831,21 +920,7 @@
 
         <div class="media">
           <figure>
-            <h4>Step 3: Preprocessing</h4>
-            <p>
-              To preprocess the images for reconstruction, we develop a statistical model of the background for each
-              camera, and then remove the background from the captured images. Next, we only perform our method on the
-              foreground images. We also perform a spectral calibration across cameras using a 24-tile Spyder color
-              checker (SCK300) and find a geometric calibration for our scene using a calibration object and COLMAP.
-              Note that since we are using 8 instances of the same camera, the spectral response is similar across
-              cameras.
-            </p>
-
-            <img src="assets/method/preprocessing.png" alt="Step 3: Preprocessing">
-          </figure>
-
-          <figure>
-            <h4>Step 4: Forward Pass</h4>
+            <h4>Step 3: Forward Pass</h4>
             <p>
               For each forward pass we render the scene using a single-color-channel dynamic gaussian model which we
               adapt from <a href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>, for a
@@ -854,18 +929,14 @@
               by the rendered motion for each time stamp and sum over these images to produce a final colored image
               which should correspond to the captured image for camera <b><i>C<sub>i</sub></i></b>.
             </p>
-            <img src="assets/method/reconstruction_forward.png" alt="Step 4: Forward pass">
-          </figure>
-
-          <figure>
-            <h4>Step 5: Loss Functions</h4>
+            <img src="assets/method/reconstruction_forward.png" alt="Step 3: Forward pass">
             <p>
               Our loss function has two components: a L<sub>1</sub> loss between the image output by our model and the
               captured image for each camera, and total variation loss on the inverse depth images to encourage
               smoothness in the
               scene's geometry.
             </p>
-            <img src="assets/method/reconstruction_loss.png" alt="Step 5: Loss functions">
+            <img src="assets/method/reconstruction_loss.png" alt="Step 3: Loss functions">
           </figure>
         </div>
       </div>
@@ -1157,7 +1228,61 @@
       ).then(fitGifRows);
     }
 
+    function setupTeaserVideoEndPause() {
+      const teaserVideos = document.querySelectorAll('#teaser video[data-end-pause-ms]');
+      const syncGroups = new Map();
+
+      teaserVideos.forEach(video => {
+        const groupName = video.dataset.syncGroup;
+        if (!groupName) return;
+        if (!syncGroups.has(groupName)) {
+          syncGroups.set(groupName, { videos: [], restartTimeoutId: null });
+        }
+        syncGroups.get(groupName).videos.push(video);
+      });
+
+      teaserVideos.forEach(video => {
+        const pauseMs = Number(video.dataset.endPauseMs) || 1500;
+        const groupName = video.dataset.syncGroup;
+        const syncGroup = groupName ? syncGroups.get(groupName) : null;
+        let restartTimeoutId = null;
+
+        video.loop = false;
+
+        video.addEventListener('ended', () => {
+          if (syncGroup) {
+            window.clearTimeout(syncGroup.restartTimeoutId);
+            syncGroup.restartTimeoutId = window.setTimeout(() => {
+              syncGroup.videos.forEach(groupVideo => {
+                groupVideo.currentTime = 0;
+              });
+              syncGroup.videos.forEach(groupVideo => {
+                groupVideo.play().catch(() => { });
+              });
+            }, pauseMs);
+            return;
+          }
+
+          window.clearTimeout(restartTimeoutId);
+          restartTimeoutId = window.setTimeout(() => {
+            video.currentTime = 0;
+            video.play().catch(() => { });
+          }, pauseMs);
+        });
+      });
+
+      syncGroups.forEach(syncGroup => {
+        syncGroup.videos.forEach(groupVideo => {
+          groupVideo.currentTime = 0;
+        });
+        syncGroup.videos.forEach(groupVideo => {
+          groupVideo.play().catch(() => { });
+        });
+      });
+    }
+
     window.addEventListener('DOMContentLoaded', waitForGifRowsAndFit);
+    window.addEventListener('DOMContentLoaded', setupTeaserVideoEndPause);
     window.addEventListener('resize', fitGifRows);
   </script>
 </body>
