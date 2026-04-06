@@ -922,23 +922,26 @@
           <figure>
             <h4>Step 3: Modeling the motion</h4>
             <p>
-              In order to model the motion we first perform a geometric initialization step to extract the the initial
-              point cloud and camera poses using <a href="https://colmap.github.io/">COLMAP</a>. Then we
-              For each forward pass we render the scene using a single-color-channel dynamic gaussian model which we
-              adapt from <a href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>, for a
-              camera <b><i>C<sub>i</sub></i></b> for 10 time stamps (which correspond to the 10 strobe colors).
-              Next, we take the colors from the images captured by camera <b><i>C<sub>i</sub></i></b> and multiply
-              them
-              by the rendered motion for each time stamp and sum over these images to produce a final colored image
-              which should correspond to the captured image for camera <b><i>C<sub>i</sub></i></b>.
+              In order to model the volumetric high speed scene we first perform a geometric initialization step to
+              extract the initial point cloud and camera poses using <a href="https://colmap.github.io/">COLMAP</a>.
+              We also extract the colors of the <i>N</i> strobes from the captured images, which gives us a mapping
+              between strobe time and strobe color.
+              <br>
+              We then fit our single-color-channel dynamic gaussian model (adapted from <a
+                href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>),
+              over the captured color encoded images.
+              During the forward pass, for each camera, we render the motion for <i>N</i> time stamps
+              producing <i>N</i> images of the rendered motion.
+              To optimize over this motion, we take the rendered high speed images for each camera, multiply them by the
+              strobe colors corresponding to each time stamp, and sum over these images to produce a single image which
+              we can then compute a loss over using the captured image for that camera.
+              <br>
+              In other words, we are simulating the color encoding process that we captured in our model's forward pass
+              and then comparing the result to the actual captured image.
+              To improve our method performance, we also add a total variation loss on the inverse depth images to
+              encourage smoothness in the scene's geometry.
             </p>
             <img src="assets/method/model_learning_v2.png" alt="Step 3: Forward pass">
-            <p>
-              Our loss function has two components: a L<sub>1</sub> loss between the image output by our model and the
-              captured image for each camera, and total variation loss on the inverse depth images to encourage
-              smoothness in the
-              scene's geometry.
-            </p>
           </figure>
         </div>
       </div>
