@@ -920,23 +920,25 @@
 
         <div class="media">
           <figure>
-            <h4>Step 3: Forward Pass</h4>
+            <h4>Step 3: Modeling the motion</h4>
             <p>
+              In order to model the motion we first perform a geometric initialization step to extract the the initial
+              point cloud and camera poses using <a href="https://colmap.github.io/">COLMAP</a>. Then we
               For each forward pass we render the scene using a single-color-channel dynamic gaussian model which we
               adapt from <a href="https://nju-3dv.github.io/projects/Gaussian-Flow/">Gaussian Flow</a>, for a
               camera <b><i>C<sub>i</sub></i></b> for 10 time stamps (which correspond to the 10 strobe colors).
-              Next, we take the colors from the images captured by camera <b><i>C<sub>i</sub></i></b> and multiply them
+              Next, we take the colors from the images captured by camera <b><i>C<sub>i</sub></i></b> and multiply
+              them
               by the rendered motion for each time stamp and sum over these images to produce a final colored image
               which should correspond to the captured image for camera <b><i>C<sub>i</sub></i></b>.
             </p>
-            <img src="assets/method/reconstruction_forward.png" alt="Step 3: Forward pass">
+            <img src="assets/method/model_learning_v2.png" alt="Step 3: Forward pass">
             <p>
               Our loss function has two components: a L<sub>1</sub> loss between the image output by our model and the
               captured image for each camera, and total variation loss on the inverse depth images to encourage
               smoothness in the
               scene's geometry.
             </p>
-            <img src="assets/method/reconstruction_loss.png" alt="Step 3: Loss functions">
           </figure>
         </div>
       </div>
