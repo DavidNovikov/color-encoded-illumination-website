@@ -102,7 +102,7 @@
     }
 
     h3 {
-      font-size: 25px;
+      font-size: 30px;
       margin: 0 0 10px;
     }
 
@@ -179,7 +179,7 @@
       font-size: var(--body-copy-size);
       line-height: 1.6;
       color: var(--muted);
-      max-width: 950px;
+      max-width: 1080px;
     }
 
     .hero-caption strong {
@@ -589,7 +589,7 @@
   <div class="wrap">
     <header class="paper-header">
       <h1>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</h1>
-      <h2>To appear in CVPR 2026!</h2>
+      <h2>CVPR 2026 (Highlight)</h2>
 
       <p class="authors">
         <a href="https://davidnovikov.github.io/DavidNovikov/" target="_blank" rel="noopener">David Novikov</a>,&nbsp;
@@ -634,14 +634,14 @@
         <div class="teaser-grid">
           <div class="teaser-panel">
             <div class="teaser-panel__content">
-              <p class="teaser-panel__title">Conventional camera capture</p>
+              <p class="teaser-panel__title">Conventional video capture</p>
               <div class="teaser-items">
                 <figure class="teaser-item">
                   <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
                     data-sync-group="teaser-top-row">
                     <source src="assets/teaser_figure/overview_regular_capture_middle_section_web.mp4" type="video/mp4">
                   </video>
-                  <figcaption>Scene overview with constant illumination</figcaption>
+                  <figcaption>Scene under constant illumination</figcaption>
                 </figure>
 
                 <figure class="teaser-item">
@@ -649,13 +649,13 @@
                     data-sync-group="teaser-middle-row">
                     <source src="assets/teaser_figure/single_camera_regular_capture_frame_1_web.mp4" type="video/mp4">
                   </video>
-                  <figcaption>Image formation with constant illumination</figcaption>
+                  <figcaption>Image formation under constant illumination @ 60 FPS</figcaption>
                 </figure>
 
                 <figure class="teaser-item">
                   <img src="assets/teaser_figure/single_camera_regular_capture_final_frame_1.png"
                     alt="Traditional camera capture final image">
-                  <figcaption>Captured image with constant illumination</figcaption>
+                  <figcaption>Captured image under constant illumination @ 60 FPS</figcaption>
                 </figure>
               </div>
             </div>
@@ -663,14 +663,14 @@
 
           <div class="teaser-panel">
             <div class="teaser-panel__content teaser-panel__content--split">
-              <p class="teaser-panel__title">Our color-encoded capture and volumetric scene reconstruction</p>
+              <p class="teaser-panel__title">Our color-encoded imaging and volumetric scene reconstruction</p>
               <div class="teaser-items">
                 <figure class="teaser-item">
                   <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500"
                     data-sync-group="teaser-top-row">
                     <source src="assets/teaser_figure/overview_colored_capture_web.mp4" type="video/mp4">
                   </video>
-                  <figcaption>Scene overview with color-encoded illumination</figcaption>
+                  <figcaption>Scene under color-encoded illumination</figcaption>
                 </figure>
 
                 <figure class="teaser-item">
@@ -678,13 +678,13 @@
                     data-sync-group="teaser-middle-row">
                     <source src="assets/teaser_figure/single_camera_colored_capture_cam_1_web.mp4" type="video/mp4">
                   </video>
-                  <figcaption>Image formation with color-encoded illumination</figcaption>
+                  <figcaption>Image formation under color-encoded illumination @ 60 FPS</figcaption>
                 </figure>
 
                 <figure class="teaser-item">
                   <img src="assets/teaser_figure/single_camera_colored_capture_final_cam_1.png"
                     alt="Color encoded capture final image">
-                  <figcaption>Captured image with color-encoded illumination</figcaption>
+                  <figcaption>Captured image under color-encoded illumination @ 60 FPS</figcaption>
                 </figure>
               </div>
 
@@ -695,7 +695,7 @@
                   <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500">
                     <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
                   </video>
-                  <figcaption>Recovered volumetric dynamics and novel-view rendering</figcaption>
+                  <figcaption>Recovered volumetric dynamics and novel-view rendering @ 600 FPS</figcaption>
                 </figure>
 
                 <div class="teaser-arrow-label teaser-arrow-label--up">
@@ -704,7 +704,7 @@
 
                 <figure class="teaser-stack-figure">
                   <img src="assets/teaser_figure/image_stack.png" alt="Stack of captured multi-camera images">
-                  <figcaption>Captured images<br aria-hidden="true"></figcaption>
+                  <figcaption>Captured images @ 60 FPS<br aria-hidden="true"></figcaption>
                 </figure>
               </div>
             </div>
@@ -712,26 +712,26 @@
         </div>
 
         <figcaption class="hero-caption">
-          Our method encodes high speed frames using sequential color illumination,
-          enabling high-speed dynamic volumetric reconstruction from synchronized low-frame-rate cameras (in our case
-          taking 60 fps cameras to 600 fps!).
-          Left: conventional camera capture. Right: our color-encoded capture and volumetric scene reconstruction.
+          <b>
+            TL;DR: We encode high-speed scene dynamics using sequential color strobing, enabling high-speed, 600 fps,
+            dynamic volumetric reconstruction from multiple low-frame-rate 60 fps cameras.
+            Left: conventional camera capture. Right: our color-encoded capture and volumetric scene reconstruction.</b>
         </figcaption>
       </figure>
     </section>
 
     <section id="main-results">
-      <h2>Main results</h2>
+      <h2>Selected results</h2>
 
       <div class="card results-intro">
         <div>
           <p>
-            We provide some simulated and real results here to show the power of our method. We show more results after
-            the method section, including some special cases.
+            In the 3D camera motion plots below (middle column), the training camera positions are marked in red while
+            the novel-view camera position is marked in green.
           </p>
           <p>
-            We show the training cameras in red and the novel-view cameras in green as shown to the right. We show only
-            novel viewpoints in the GIFs below. The camera plot is synchronized with the GIF motion.
+            The recovered results (right column) only show novel viewpoints. The camera position plot is synchronized
+            with the GIF motion.
           </p>
         </div>
         <img src="assets/cameras.png" alt="Camera layout visualization">
@@ -744,39 +744,37 @@
               <div class="view-block">
                 <div class="gif-row">
                   <div class="media-block">
-                    <div class="media-title">Strobed image 1</div>
+                    <div class="media-title">Strobed image</div>
                     <img class="still-img" src="assets/sim_explosion/stills/regular_scaled_sim_exp_cam_6.png"
                       alt="sim explosion - Imaged object">
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/sim_explosion/space_movement/space_movement.gif"
-                      alt="sim explosion - Space Movement- stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="sim explosion - Space movement- stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
               <div class="view-block">
                 <div class="gif-row">
                   <div class="media-block">
-                    <div class="media-title">Strobed image 2</div>
+                    <div class="media-title">Strobed image (different view)</div>
                     <img class="still-img" src="assets/sim_explosion/stills/strobed_scaled_sim_exp_cam_18.png"
                       alt="sim explosion - strobed image">
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/sim_explosion/time_movement/time_movement.gif"
-                      alt="sim explosion - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="sim explosion - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Explosion Scene - Simulated</strong></p>
-                <p>Experimental details: Here, we show the power of our method to disentangle many moving objects at
-                  the same time and find their trajectories in space and time. The cubes fly in different directions
-                  and have overlapping explosions. As we can see from the reconstruction, the cubes and their
-                  individual motions are reconstructed well.</p>
+                <p><strong>Explosion scene (simulated)</strong></p>
+                <p>Experimental details: 10 colored strobes, 50 cameras, and nine cubes moving along different
+                  trajectories.</p>
               </div>
             </div>
           </div>
@@ -796,8 +794,8 @@
                   <figure class="media-block">
                     <img class="gif-img"
                       src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/space_movement/space_movement.gif"
-                      alt="CVPR logo v2 3kOhm gain boosted 1 - Space Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - Space movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -811,18 +809,17 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/CVPR_logo_v2_3kOhm_gain_boosted_1/time_movement/time_movement.gif"
-                      alt="CVPR logo v2 3kOhm gain boosted 1 - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="CVPR logo v2 3kOhm gain boosted 1 - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Spinning Disk with Text</strong></p>
-                <p>Experimental details: Here, we capture an object on a fast-rotating disk. As seen in the main
-                  paper, the camera, at its fastest speed, is not fast enough to capture the object's motion. Our
-                  method recovers the high-speed motion in both space and time.</p>
+                <p><strong>Spinning disk experiment</strong></p>
+                <p>Experimental details: 10 colored strobes, eight cameras, and one sticker with "CVPR" text.</p>
+
               </div>
             </div>
           </div>
@@ -840,8 +837,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/chess_122/space_movement/space_movement.gif"
-                      alt="chess 122 - Space Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="chess 122 - Space movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -854,18 +851,16 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/chess_122/time_movement/time_movement.gif"
-                      alt="chess 122 - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="chess 122 - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Multiple Chess Pieces</strong></p>
-                <p>Experimental details: Here, we capture three chess pieces falling downward. Despite some visible
-                  artifacts, our method recovers the volumetric motion of the chess pieces, enabling high-speed novel
-                  view rendering.</p>
+                <p><strong>Flying chess pieces (a.k.a. 4D chess)</strong></p>
+                <p>Experimental details: 10 colored strobes, eight cameras, and three chess pieces falling downward.</p>
               </div>
             </div>
           </div>
@@ -912,17 +907,17 @@
               synchronize it to the cameras' capture. We show our circuit schematic and a photo of our physical setup.
               We use the MOBL-300x150-RGBW light and IDS UI-3240CP cameras.
             </p>
-            <img src="assets/method/cam_and_light_setup_v2.png" alt="Step 2: Synchronizing light to cameras">
+            <img src="assets/method/cam_and_light_setup_v3.png" alt="Step 2: Synchronizing light to cameras">
           </figure>
         </div>
 
-        <h2>Part 2: Training and reconstruction</h2>
+        <h3>Part 2: Training and reconstruction</h3>
 
         <div class="media">
           <figure>
             <h4>Step 3: Modeling the motion</h4>
             <p>
-              In order to model the volumetric high speed scene we first perform a geometric initialization step to
+              In order to model the volumetric high-speed scene we first perform a geometric initialization step to
               extract the initial point cloud and camera poses using <a href="https://colmap.github.io/">COLMAP</a>.
               We also extract the colors of the <i>N</i> strobes from the captured images, which gives us a mapping
               between strobe time and strobe color.
@@ -932,7 +927,7 @@
               over the captured color encoded images.
               During the forward pass, for each camera, we render the motion for <i>N</i> time stamps
               producing <i>N</i> images of the rendered motion.
-              To optimize over this motion, we take the rendered high speed images for each camera, multiply them by the
+              To optimize over this motion, we take the rendered high-speed images for each camera, multiply them by the
               strobe colors corresponding to each time stamp, and sum over these images to produce a single image which
               we can then compute a loss over using the captured image for that camera.
               <br>
@@ -941,7 +936,7 @@
               To improve our method performance, we also add a total variation loss on the inverse depth images to
               encourage smoothness in the scene's geometry.
             </p>
-            <img src="assets/method/model_learning_v2.png" alt="Step 3: Forward pass">
+            <img src="assets/method/model_learning_v3.png" alt="Step 3: Forward pass">
           </figure>
         </div>
       </div>
@@ -963,8 +958,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/CVPR_logo_yellow_v2/space_movement/space_movement.gif"
-                      alt="CVPR logo yellow v2 - Space Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="CVPR logo yellow v2 - Space movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -977,8 +972,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/CVPR_logo_yellow_v2/time_movement/time_movement.gif"
-                      alt="CVPR logo yellow v2 - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="CVPR logo yellow v2 - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -986,10 +981,9 @@
             <div class="experiment-notes">
               <div class="experiment-notes-box">
                 <p><strong>Non-white reflectance</strong></p>
-                <p>Experimental details: Here, we demonstrate that our method is not limited to pure white albedos.
-                  The yellow paper reflects blue light poorly, diminishing the intensity of the bluish strobes.
-                  Despite this, we can recover the motion well. We encourage you to compare this result to the
-                  experiment with the white paper and "CVPR" text.</p>
+                <p>Experimental details: 10 colored strobes, eight cameras, and one <i>yellow</i> sticker with "CVPR"
+                  text. We encourage you to compare this result to the experiment with the white paper and "CVPR" text.
+                </p>
               </div>
             </div>
           </div>
@@ -1007,19 +1001,17 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/single_camera/time_movement/time_movement.gif"
-                      alt="single camera - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="single camera - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Single Camera View - Simulated</strong></p>
-                <p>Experimental details: In this experiment, we show that we are able to reconstruct the scene even
-                  with a single camera. As we can see, the motion is still recovered well for the single strobed
-                  image. We don't show the motion over multiple camera positions, as a traditional single-camera image
-                  is not sufficient to reconstruct a 3D scene.</p>
+                <p><strong>Single camera view (simulated)</strong></p>
+                <p>Experimental details: 10 colored strobes, one camera, and a simulated sticker with "CVPR"
+                  text.</p>
               </div>
             </div>
           </div>
@@ -1037,8 +1029,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/w_background/space_movement/space_movement.gif"
-                      alt="w background - Space Movement for frame 4 - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="w background - Space movement for frame 4 - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -1051,18 +1043,17 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/w_background/time_movement/time_movement.gif"
-                      alt="w background - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="w background - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Non-negligible Background - Simulated</strong></p>
-                <p>Experimental details: Here we simulate the effect of a non-negligible stationary background. The
-                  recovery shows that the object motion is still recoverable in the background's presence; however,
-                  some artifacts begin to emerge.</p>
+                <p><strong>Non-negligible background (simulated)</strong></p>
+                <p>Experimental details: 10 colored strobes, 20 cameras, and a monkey head moving in an arc with a
+                  non-negligible background.</p>
               </div>
             </div>
           </div>
@@ -1079,8 +1070,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/nerf_dart_3rd_attempt/space_movement/space_movement.gif"
-                      alt="nerf dart 3rd attempt - Space Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="nerf dart 3rd attempt - Space movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -1093,20 +1084,17 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/nerf_dart_3rd_attempt/time_movement/time_movement.gif"
-                      alt="nerf dart 3rd attempt - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="nerf dart 3rd attempt - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
             </div>
             <div class="experiment-notes">
               <div class="experiment-notes-box">
-                <p><strong>Nerf Dart</strong></p>
-                <p>Experimental details: Here we capture a Nerf dart flying across the screen and hiting a wall before
-                  bouncing backwards. For this experiment, we positioned the cameras to be roughly in a row to capture
-                  the full range of the Nerf dart's motion.</p>
-                <p>Many prior works have used Nerf darts as simple, fast-moving, lab-safe objects for capture.
-                  However, ours is the first to demonstrate a volumetric, high-speed rendering of their motion.</p>
+                <p><strong>Nerf dart</strong></p>
+                <p>Experimental details: 10 colored strobes, 8 cameras, and a nerf dart with a rapid change in motion.
+                </p>
               </div>
             </div>
           </div>
@@ -1124,8 +1112,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/nuts_58/space_movement/space_movement.gif"
-                      alt="nuts 58 - Space Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Space Movement</figcaption>
+                      alt="nuts 58 - Space movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Space movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -1138,8 +1126,8 @@
                   </div>
                   <figure class="media-block">
                     <img class="gif-img" src="assets/nuts_58/time_movement/time_movement.gif"
-                      alt="nuts 58 - Time Movement - stitched cam + frames">
-                    <figcaption class="gif-caption">Time Movement</figcaption>
+                      alt="nuts 58 - Time movement - stitched cam + frames">
+                    <figcaption class="gif-caption">Time movement</figcaption>
                   </figure>
                 </div>
               </div>
@@ -1147,9 +1135,8 @@
             <div class="experiment-notes">
               <div class="experiment-notes-box">
                 <p><strong>Particles</strong></p>
-                <p>Experimental details: Here we capture small identical 'particles'. We covered metal hex nuts with
-                  white paper and threw them in front of the cameras. We can decouple the individual particles and
-                  show their relative positions in space as they move.</p>
+                <p>Experimental details: 10 colored strobes, 8 cameras, and four hexagonal particles.</p>
+
               </div>
             </div>
           </div>
