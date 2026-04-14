@@ -238,6 +238,8 @@
       position: relative;
       grid-template-rows: auto minmax(0, 1fr);
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 27px;
+      row-gap: 18px;
       align-items: stretch;
       background: rgba(37, 99, 235, 0.03);
     }
@@ -257,26 +259,25 @@
 
     .teaser-items {
       display: grid;
-      grid-template-rows: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(3, auto);
       gap: 14px;
+      align-content: space-between;
       min-height: 0;
-      height: 100%;
     }
 
     .teaser-item {
       display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
+      grid-template-rows: auto auto;
       min-height: 0;
     }
 
     .teaser-item video,
     .teaser-item img {
       width: min(100%, var(--teaser-media-width));
-      height: 100%;
+      height: auto;
       display: block;
       margin: 0 auto;
       border: none;
-      object-fit: cover;
     }
 
     .teaser-item figcaption {
@@ -341,9 +342,11 @@
     .teaser-recon-flow {
       height: 100%;
       display: grid;
-      grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
-      row-gap: clamp(12px, 2vw, 24px);
-      align-items: stretch;
+      grid-template-rows: repeat(3, auto);
+      row-gap: 14px;
+      align-content: space-between;
+      align-items: start;
+      min-height: 0;
     }
 
     .teaser-stack-figure,
@@ -351,41 +354,91 @@
       margin: 0;
       width: 100%;
       display: grid;
-      grid-template-rows: minmax(0, 1fr) auto;
+      grid-template-rows: auto auto;
       text-align: center;
       min-height: 0;
     }
 
     .teaser-recon-video {
-      align-self: start;
+      grid-row: 3;
+      align-self: end;
+    }
+
+    .teaser-recon-video__frame {
+      position: relative;
+      width: min(100%, var(--teaser-media-width));
+      margin: 0 auto;
+      z-index: 0;
+    }
+
+    .teaser-recon-video--highlight .teaser-recon-video__frame::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border: 5px solid rgba(96, 165, 250, 0.85);
+      box-shadow: 0 0 18px rgba(147, 197, 253, 0.45);
+      pointer-events: none;
+      animation: teaser-border-fade 2.5s ease-in-out infinite;
+      z-index: -1;
     }
 
     .teaser-stack-figure {
-      align-self: end;
+      grid-row: 1;
+      align-self: start;
+    }
+
+    .teaser-recon-flow .teaser-arrow-label {
+      grid-row: 2;
+      align-self: start;
+      transform: translateY(-30%);
     }
 
     .teaser-recon-flow__overlay-arrow {
       position: absolute;
-      left: 49.4%;
-      bottom: 110px;
-      width: 43px;
-      height: 0;
-      border-top: 9px solid #dc2626;
-      transform: translateX(-50%);
+      left: calc(50% - 24.5px);
+      bottom: calc(20%);
+      width: 58px;
+      height: calc(53%);
       pointer-events: none;
       z-index: 3;
     }
 
-    .teaser-recon-flow__overlay-arrow::after {
+    .teaser-recon-flow__overlay-arrow-segment {
+      position: absolute;
+      background: #dc2626;
+    }
+
+    .teaser-recon-flow__overlay-arrow-segment--start {
+      left: -4px;
+      width: 29px;
+      bottom: 0;
+      height: 9px;
+    }
+
+    .teaser-recon-flow__overlay-arrow-segment--vertical {
+      left: 16px;
+      top: 9px;
+      bottom: 9px;
+      width: 9px;
+    }
+
+    .teaser-recon-flow__overlay-arrow-segment--end {
+      left: 16px;
+      top: 0;
+      width: 29px;
+      height: 9px;
+    }
+
+    .teaser-recon-flow__overlay-arrow-segment--end::after {
       content: "";
       position: absolute;
       right: -7px;
-      top: 50%;
-      width: 27px;
-      height: 27px;
+      top: 60%;
+      width: 24px;
+      height: 24px;
       border-top: 9px solid #dc2626;
       border-right: 9px solid #dc2626;
-      transform: translateY(calc(-50% - 4.5px)) rotate(45deg);
+      transform: translateY(calc(-60% + 1px)) rotate(45deg);
       transform-origin: center;
     }
 
@@ -397,9 +450,21 @@
     }
 
     .teaser-recon-video video {
-      width: min(100%, var(--teaser-media-width));
+      width: 100%;
       display: block;
       margin: 0 auto;
+    }
+
+    @keyframes teaser-border-fade {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     .results-intro {
@@ -688,23 +753,32 @@
                 </figure>
               </div>
 
-              <div class="teaser-recon-flow__overlay-arrow" aria-hidden="true"></div>
+              <div class="teaser-recon-flow__overlay-arrow" aria-hidden="true">
+                <span
+                  class="teaser-recon-flow__overlay-arrow-segment teaser-recon-flow__overlay-arrow-segment--start"></span>
+                <span
+                  class="teaser-recon-flow__overlay-arrow-segment teaser-recon-flow__overlay-arrow-segment--vertical"></span>
+                <span
+                  class="teaser-recon-flow__overlay-arrow-segment teaser-recon-flow__overlay-arrow-segment--end"></span>
+              </div>
 
               <div class="teaser-recon-flow">
-                <figure class="teaser-recon-video">
-                  <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500">
-                    <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
-                  </video>
-                  <figcaption>Recovered volumetric dynamics and novel-view rendering @ 600 FPS</figcaption>
-                </figure>
-
-                <div class="teaser-arrow-label teaser-arrow-label--up">
-                  Our volumetric reconstruction and rendering method
-                </div>
-
                 <figure class="teaser-stack-figure">
                   <img src="assets/teaser_figure/image_stack.png" alt="Stack of captured multi-camera images">
                   <figcaption>Captured images @ 60 FPS<br aria-hidden="true"></figcaption>
+                </figure>
+
+                <div class="teaser-arrow-label">
+                  Our volumetric reconstruction and rendering method
+                </div>
+
+                <figure class="teaser-recon-video teaser-recon-video--highlight">
+                  <div class="teaser-recon-video__frame">
+                    <video muted autoplay playsinline preload="auto" data-end-pause-ms="1500">
+                      <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <figcaption>Recovered volumetric dynamics and novel-view rendering @ 600 FPS</figcaption>
                 </figure>
               </div>
             </div>
