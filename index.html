@@ -187,10 +187,9 @@
     }
 
     .hero-caption {
-      margin-top: 12px;
-      font-size: var(--body-copy-size);
-      line-height: 1.6;
-      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: clamp(20px, 2.3vw, 26px);
+      line-height: 1.5;
       max-width: 1080px;
     }
 
@@ -298,7 +297,8 @@
     }
 
     .teaser-items>.teaser-item:last-child figcaption,
-    .teaser-stack-figure figcaption {
+    .teaser-stack-figure figcaption,
+    .teaser-recon-video figcaption {
       min-height: 3em;
     }
 
@@ -708,6 +708,14 @@
 
     <section id="teaser">
       <figure>
+        <figcaption class="hero-caption">
+          <b>
+            Paper TL;DR: We encode high-speed scene dynamics using sequential color strobing, enabling high-speed, 600
+            fps,
+            dynamic volumetric reconstruction from multiple low-frame-rate 60 fps cameras.
+            Left: conventional camera capture. Right: our color-encoded capture and volumetric scene reconstruction.</b>
+        </figcaption>
+
         <div class="teaser-grid">
           <div class="teaser-panel">
             <div class="teaser-panel__content">
@@ -793,19 +801,13 @@
                       <source src="assets/teaser_figure/sequence_render_web.mp4" type="video/mp4">
                     </video>
                   </div>
-                  <figcaption>Recovered volumetric dynamics and novel-view rendering @ 600 FPS</figcaption>
+                  <figcaption>Our novel-view rendering @ 600 FPS</figcaption>
                 </figure>
               </div>
             </div>
           </div>
         </div>
 
-        <figcaption class="hero-caption">
-          <b>
-            TL;DR: We encode high-speed scene dynamics using sequential color strobing, enabling high-speed, 600 fps,
-            dynamic volumetric reconstruction from multiple low-frame-rate 60 fps cameras.
-            Left: conventional camera capture. Right: our color-encoded capture and volumetric scene reconstruction.</b>
-        </figcaption>
       </figure>
     </section>
 
