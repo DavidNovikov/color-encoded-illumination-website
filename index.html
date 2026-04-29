@@ -91,6 +91,21 @@
       text-align: center;
     }
 
+    .button.is-disabled {
+      background-color: #b8bec8 !important;
+      border-color: #b8bec8 !important;
+      color: #f4f6f8 !important;
+      cursor: not-allowed;
+      opacity: 0.7;
+      pointer-events: none;
+      box-shadow: none;
+    }
+
+    .button.is-disabled:hover {
+      color: #f4f6f8 !important;
+      text-decoration: none;
+    }
+
     h1 {
       font-size: 54px;
       line-height: 1.08;
@@ -711,17 +726,18 @@
           <span>BibTeX</span>
         </a>
 
-        <a href="#" class="button is-dark is-rounded">
+        <a href="#" class="button is-dark is-rounded is-disabled" aria-disabled="true" tabindex="-1">
           <span class="icon"><i class="fab fa-github"></i></span>
           <span>Code</span>
         </a>
 
-        <a href="poster.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+        <a href="poster.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded is-disabled"
+          aria-disabled="true" tabindex="-1">
           <span class="icon"><i class="fas fa-file-pdf"></i></span>
           <span>Poster</span>
         </a>
 
-        <a href="#" class="button is-dark is-rounded">
+        <a href="#" class="button is-dark is-rounded is-disabled" aria-disabled="true" tabindex="-1">
           <span class="icon"><i class="fab fa-youtube"></i></span>
           <span>Video</span>
         </a>
