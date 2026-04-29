@@ -35,6 +35,7 @@
       --radius: 12px;
       --max: 1080px;
       --body-copy-size: 16px;
+      --paper-tldr-size: clamp(17px, 1.9vw, 22px);
     }
 
     * {
@@ -129,7 +130,7 @@
 
     .authors {
       margin: 0 0 10px;
-      font-size: 18px;
+      font-size: 26px;
       line-height: 1.6;
     }
 
@@ -140,7 +141,19 @@
     .affil {
       color: var(--muted);
       margin: 0 0 8px;
-      font-size: 18px;
+      font-size: 26px;
+    }
+
+    .affil-with-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .affil-logo {
+      height: 40px;
+      width: auto;
+      display: block;
     }
 
     section {
@@ -191,6 +204,11 @@
       font-size: clamp(20px, 2.3vw, 26px);
       line-height: 1.5;
       max-width: 1080px;
+    }
+
+    .paper-tldr {
+      font-size: var(--paper-tldr-size);
+      line-height: 1.4;
     }
 
     .hero-caption strong {
@@ -676,7 +694,11 @@
         <a href="https://www.marksheinin.com/" target="_blank" rel="noopener">Mark Sheinin</a>
       </p>
 
-      <p class="affil">Weizmann Institute of Science</p>
+      <p class="affil affil-with-logo">
+        <span>Weizmann Institute of Science</span>
+        <img class="affil-logo" src="assets/weizmann_logo.png" alt="Weizmann Institute of Science logo">
+
+      </p>
 
       <div class="buttons is-centered">
         <a href="The_paper.pdf" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
@@ -708,7 +730,7 @@
 
     <section id="teaser">
       <figure>
-        <figcaption class="hero-caption">
+        <figcaption class="hero-caption paper-tldr">
           <b>
             Paper TL;DR: We encode high-speed scene dynamics using sequential color strobing, enabling high-speed, 600
             fps,
@@ -1239,10 +1261,10 @@
     <section id="citation">
       <h2>BibTeX</h2>
       <div class="card">
-        <pre><code>@article{novikov2026colorencoded,
+        <pre><code>@inproceedings{novikov2026colorencoded,
   title   = {Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction},
   author  = {Novikov, David and Vaknin Laufer, Eilon and Tumanyan, Narek and Sheinin, Mark},
-  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  booktitle = {Proceedings of the The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year    = {2026}
 }</code></pre>
       </div>
