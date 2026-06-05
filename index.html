@@ -17,6 +17,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="regular_scaled_sim_exp_cam_6.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction</title>
   <meta name="description" content="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
@@ -228,6 +229,26 @@
 
     .hero-caption strong {
       color: var(--fg);
+    }
+
+    .video-embed-card {
+      padding: 18px;
+    }
+
+    .video-embed-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-embed-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
     }
 
     pre {
@@ -737,7 +758,8 @@
           <span>Poster</span>
         </a>
 
-        <a href="#" class="button is-dark is-rounded is-disabled" aria-disabled="true" tabindex="-1">
+        <a href="https://www.youtube.com/watch?v=tG3xeo-Ec1w" target="_blank" rel="noopener noreferrer"
+          class="button is-dark is-rounded">
           <span class="icon"><i class="fab fa-youtube"></i></span>
           <span>Video</span>
         </a>
@@ -850,6 +872,17 @@
     </section>
 
     <section id="main-results">
+      <div class="card video-embed-card">
+        <div class="video-embed-frame">
+          <iframe
+            src="https://www.youtube.com/embed/tG3xeo-Ec1w"
+            title="Color-Encoded Illumination for High-Speed Volumetric Scene Reconstruction video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
       <h2>Selected results</h2>
 
       <div class="card results-intro">
